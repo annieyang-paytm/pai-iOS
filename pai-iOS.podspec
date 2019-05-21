@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-    s.name         = "pai"
-    s.version      = "0.1.2"
+    s.name         = "pai-iOS"
+    s.version      = "0.1.3"
     s.summary      = "Notifications and campaign manager"
     s.description  = <<-DESC
         Notifications and campaign manager
