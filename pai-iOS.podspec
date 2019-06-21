@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
     s.version      = "0.2.0"
-    s.summary      = "Notifications and campaign manager"
+    s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-        Notifications and campaign manager
+        Notifications and campaign manager for Clients.
     DESC
-    s.homepage     = "http://your.homepage/here"
+    s.homepage     = "https://wiki.mypaytm.com/display/MAMA/iOS+Notification+SDK"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
     s.author             = { 'Abhishek Sharma' => 'abhishek21.sharma@paytm.com' }
     s.source       = { :git => 'https://github.com/midgardev/pai-iOS.git', :tag => s.version.to_s }
