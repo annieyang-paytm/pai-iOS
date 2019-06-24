@@ -215,6 +215,13 @@ SWIFT_CLASS("_TtC3pai18CornerRoundingView")
 
 
 
+
+SWIFT_CLASS("_TtC3pai9PNChannel")
+@interface PNChannel : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 @class NSEntityDescription;
 @class NSManagedObjectContext;
 
@@ -284,6 +291,7 @@ SWIFT_CLASS_NAMED("PNInboxMessageData")
 @property (nonatomic, strong) NSNumber * _Nullable isExpired;
 @end
 
+enum PNSDKMode : NSInteger;
 
 SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @interface PNNotificationManager : NSObject
@@ -303,12 +311,17 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 ///
 /// \param isStaging Is the module in staging mode
 ///
-- (void)startWithAppGroupName:(NSString * _Nonnull)appGroupName clientId:(NSString * _Nonnull)clientId key:(NSString * _Nonnull)key loggedInUserId:(NSString * _Nullable)loggedInUserId firebaseConfigFile:(NSString * _Nullable)firebaseConfigFile isStaging:(BOOL)isStaging;
+/// \param sdkMode Defines that login of user is handled by server or client(SDK)
+///
+- (void)startWithAppGroupName:(NSString * _Nonnull)appGroupName clientId:(NSString * _Nonnull)clientId key:(NSString * _Nonnull)key loggedInUserId:(NSString * _Nullable)loggedInUserId firebaseConfigFile:(NSString * _Nullable)firebaseConfigFile isStaging:(BOOL)isStaging sdkMode:(enum PNSDKMode)sdkMode;
 - (void)deleteConfigWithCompletion:(void (^ _Nullable)(BOOL))completion;
 - (void)checkBuildStatusWithIsStaging:(BOOL)isStaging completion:(void (^ _Nullable)(BOOL))completion;
 @end
 
 
+@interface PNNotificationManager (SWIFT_EXTENSION(pai))
+- (PNChannel * _Nullable)getChannel SWIFT_WARN_UNUSED_RESULT;
+@end
 
 
 
@@ -321,6 +334,8 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull inboxListUpdatedNotification;)
 + (NSString * _Nonnull)inboxListUpdatedNotification SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 @class UIApplication;
 @class UNUserNotificationCenter;
@@ -370,6 +385,11 @@ SWIFT_CLASS("_TtC3pai30PNNotificationServiceExtension")
 - (void)serviceExtensionTimeWillExpire;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
+typedef SWIFT_ENUM(NSInteger, PNSDKMode, closed) {
+  PNSDKModeServerLogin = 1,
+  PNSDKModeClientLogin = 2,
+};
 
 
 SWIFT_CLASS("_TtC3pai19PNSignalBaseSession")
@@ -657,6 +677,13 @@ SWIFT_CLASS("_TtC3pai18CornerRoundingView")
 
 
 
+
+SWIFT_CLASS("_TtC3pai9PNChannel")
+@interface PNChannel : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 @class NSEntityDescription;
 @class NSManagedObjectContext;
 
@@ -726,6 +753,7 @@ SWIFT_CLASS_NAMED("PNInboxMessageData")
 @property (nonatomic, strong) NSNumber * _Nullable isExpired;
 @end
 
+enum PNSDKMode : NSInteger;
 
 SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @interface PNNotificationManager : NSObject
@@ -745,12 +773,17 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 ///
 /// \param isStaging Is the module in staging mode
 ///
-- (void)startWithAppGroupName:(NSString * _Nonnull)appGroupName clientId:(NSString * _Nonnull)clientId key:(NSString * _Nonnull)key loggedInUserId:(NSString * _Nullable)loggedInUserId firebaseConfigFile:(NSString * _Nullable)firebaseConfigFile isStaging:(BOOL)isStaging;
+/// \param sdkMode Defines that login of user is handled by server or client(SDK)
+///
+- (void)startWithAppGroupName:(NSString * _Nonnull)appGroupName clientId:(NSString * _Nonnull)clientId key:(NSString * _Nonnull)key loggedInUserId:(NSString * _Nullable)loggedInUserId firebaseConfigFile:(NSString * _Nullable)firebaseConfigFile isStaging:(BOOL)isStaging sdkMode:(enum PNSDKMode)sdkMode;
 - (void)deleteConfigWithCompletion:(void (^ _Nullable)(BOOL))completion;
 - (void)checkBuildStatusWithIsStaging:(BOOL)isStaging completion:(void (^ _Nullable)(BOOL))completion;
 @end
 
 
+@interface PNNotificationManager (SWIFT_EXTENSION(pai))
+- (PNChannel * _Nullable)getChannel SWIFT_WARN_UNUSED_RESULT;
+@end
 
 
 
@@ -763,6 +796,8 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull inboxListUpdatedNotification;)
 + (NSString * _Nonnull)inboxListUpdatedNotification SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 @class UIApplication;
 @class UNUserNotificationCenter;
@@ -812,6 +847,11 @@ SWIFT_CLASS("_TtC3pai30PNNotificationServiceExtension")
 - (void)serviceExtensionTimeWillExpire;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
+typedef SWIFT_ENUM(NSInteger, PNSDKMode, closed) {
+  PNSDKModeServerLogin = 1,
+  PNSDKModeClientLogin = 2,
+};
 
 
 SWIFT_CLASS("_TtC3pai19PNSignalBaseSession")
