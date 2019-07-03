@@ -226,73 +226,21 @@ SWIFT_CLASS("_TtC3pai9PNChannel")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class NSEntityDescription;
-@class NSManagedObjectContext;
-
-SWIFT_CLASS_NAMED("PNFlashMessageData")
-@interface PNFlashMessageData : NSManagedObject
-- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-
-
-
-
-
-
-
-@class NSDate;
-@class NSNumber;
-
-@interface PNFlashMessageData (SWIFT_EXTENSION(pai))
-@property (nonatomic, copy) NSString * _Nullable pushId;
-@property (nonatomic, copy) NSString * _Nullable customerId;
-@property (nonatomic, strong) NSDate * _Nullable receivedTime;
-@property (nonatomic, strong) NSDate * _Nullable expiryTime;
-@property (nonatomic, strong) NSDate * _Nullable displayTime;
-@property (nonatomic, copy) NSString * _Nullable payload;
-@property (nonatomic, copy) NSString * _Nullable displayStatus;
-@property (nonatomic, strong) NSNumber * _Nullable isUpdatedToServer;
-@end
-
 
 SWIFT_CLASS("_TtC3pai14PNInboxMessage")
 @interface PNInboxMessage : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull pushId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull customerId;
+@property (nonatomic, readonly, copy) NSString * _Nullable title;
+@property (nonatomic, readonly, copy) NSString * _Nullable body;
+@property (nonatomic, readonly, copy) NSDate * _Nullable expiryDate;
+@property (nonatomic, readonly, copy) NSString * _Nullable imageURL;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (BOOL)isUnread SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isDeleted SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isRead SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS_NAMED("PNInboxMessageData")
-@interface PNInboxMessageData : NSManagedObject
-- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-
-
-
-
-
-
-@interface PNInboxMessageData (SWIFT_EXTENSION(pai))
-@property (nonatomic, copy) NSString * _Nullable customerId;
-@property (nonatomic, strong) NSDate * _Nullable expiryTime;
-@property (nonatomic, strong) NSNumber * _Nullable isUpdatedOnServer;
-@property (nonatomic, copy) NSString * _Nullable payload;
-@property (nonatomic, copy) NSString * _Nullable pushId;
-@property (nonatomic, strong) NSDate * _Nullable receivedTime;
-@property (nonatomic, copy) NSString * _Nullable tag;
-@property (nonatomic, strong) NSNumber * _Nullable isExpired;
 @end
 
 enum PNSDKMode : NSInteger;
@@ -325,15 +273,15 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @end
 
 
+
+
+
+
+
+
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
 - (PNChannel * _Nullable)getChannel SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
-
-
-
-
 
 
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
@@ -690,73 +638,21 @@ SWIFT_CLASS("_TtC3pai9PNChannel")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class NSEntityDescription;
-@class NSManagedObjectContext;
-
-SWIFT_CLASS_NAMED("PNFlashMessageData")
-@interface PNFlashMessageData : NSManagedObject
-- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-
-
-
-
-
-
-
-@class NSDate;
-@class NSNumber;
-
-@interface PNFlashMessageData (SWIFT_EXTENSION(pai))
-@property (nonatomic, copy) NSString * _Nullable pushId;
-@property (nonatomic, copy) NSString * _Nullable customerId;
-@property (nonatomic, strong) NSDate * _Nullable receivedTime;
-@property (nonatomic, strong) NSDate * _Nullable expiryTime;
-@property (nonatomic, strong) NSDate * _Nullable displayTime;
-@property (nonatomic, copy) NSString * _Nullable payload;
-@property (nonatomic, copy) NSString * _Nullable displayStatus;
-@property (nonatomic, strong) NSNumber * _Nullable isUpdatedToServer;
-@end
-
 
 SWIFT_CLASS("_TtC3pai14PNInboxMessage")
 @interface PNInboxMessage : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull pushId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull customerId;
+@property (nonatomic, readonly, copy) NSString * _Nullable title;
+@property (nonatomic, readonly, copy) NSString * _Nullable body;
+@property (nonatomic, readonly, copy) NSDate * _Nullable expiryDate;
+@property (nonatomic, readonly, copy) NSString * _Nullable imageURL;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (BOOL)isUnread SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isDeleted SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isRead SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS_NAMED("PNInboxMessageData")
-@interface PNInboxMessageData : NSManagedObject
-- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-
-
-
-
-
-
-@interface PNInboxMessageData (SWIFT_EXTENSION(pai))
-@property (nonatomic, copy) NSString * _Nullable customerId;
-@property (nonatomic, strong) NSDate * _Nullable expiryTime;
-@property (nonatomic, strong) NSNumber * _Nullable isUpdatedOnServer;
-@property (nonatomic, copy) NSString * _Nullable payload;
-@property (nonatomic, copy) NSString * _Nullable pushId;
-@property (nonatomic, strong) NSDate * _Nullable receivedTime;
-@property (nonatomic, copy) NSString * _Nullable tag;
-@property (nonatomic, strong) NSNumber * _Nullable isExpired;
 @end
 
 enum PNSDKMode : NSInteger;
@@ -789,15 +685,15 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @end
 
 
+
+
+
+
+
+
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
 - (PNChannel * _Nullable)getChannel SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
-
-
-
-
 
 
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
@@ -1158,73 +1054,21 @@ SWIFT_CLASS("_TtC3pai9PNChannel")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class NSEntityDescription;
-@class NSManagedObjectContext;
-
-SWIFT_CLASS_NAMED("PNFlashMessageData")
-@interface PNFlashMessageData : NSManagedObject
-- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-
-
-
-
-
-
-
-@class NSDate;
-@class NSNumber;
-
-@interface PNFlashMessageData (SWIFT_EXTENSION(pai))
-@property (nonatomic, copy) NSString * _Nullable pushId;
-@property (nonatomic, copy) NSString * _Nullable customerId;
-@property (nonatomic, strong) NSDate * _Nullable receivedTime;
-@property (nonatomic, strong) NSDate * _Nullable expiryTime;
-@property (nonatomic, strong) NSDate * _Nullable displayTime;
-@property (nonatomic, copy) NSString * _Nullable payload;
-@property (nonatomic, copy) NSString * _Nullable displayStatus;
-@property (nonatomic, strong) NSNumber * _Nullable isUpdatedToServer;
-@end
-
 
 SWIFT_CLASS("_TtC3pai14PNInboxMessage")
 @interface PNInboxMessage : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull pushId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull customerId;
+@property (nonatomic, readonly, copy) NSString * _Nullable title;
+@property (nonatomic, readonly, copy) NSString * _Nullable body;
+@property (nonatomic, readonly, copy) NSDate * _Nullable expiryDate;
+@property (nonatomic, readonly, copy) NSString * _Nullable imageURL;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (BOOL)isUnread SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isDeleted SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isRead SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS_NAMED("PNInboxMessageData")
-@interface PNInboxMessageData : NSManagedObject
-- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-
-
-
-
-
-
-@interface PNInboxMessageData (SWIFT_EXTENSION(pai))
-@property (nonatomic, copy) NSString * _Nullable customerId;
-@property (nonatomic, strong) NSDate * _Nullable expiryTime;
-@property (nonatomic, strong) NSNumber * _Nullable isUpdatedOnServer;
-@property (nonatomic, copy) NSString * _Nullable payload;
-@property (nonatomic, copy) NSString * _Nullable pushId;
-@property (nonatomic, strong) NSDate * _Nullable receivedTime;
-@property (nonatomic, copy) NSString * _Nullable tag;
-@property (nonatomic, strong) NSNumber * _Nullable isExpired;
 @end
 
 enum PNSDKMode : NSInteger;
@@ -1257,15 +1101,15 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @end
 
 
+
+
+
+
+
+
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
 - (PNChannel * _Nullable)getChannel SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
-
-
-
-
 
 
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
@@ -1622,73 +1466,21 @@ SWIFT_CLASS("_TtC3pai9PNChannel")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class NSEntityDescription;
-@class NSManagedObjectContext;
-
-SWIFT_CLASS_NAMED("PNFlashMessageData")
-@interface PNFlashMessageData : NSManagedObject
-- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-
-
-
-
-
-
-
-@class NSDate;
-@class NSNumber;
-
-@interface PNFlashMessageData (SWIFT_EXTENSION(pai))
-@property (nonatomic, copy) NSString * _Nullable pushId;
-@property (nonatomic, copy) NSString * _Nullable customerId;
-@property (nonatomic, strong) NSDate * _Nullable receivedTime;
-@property (nonatomic, strong) NSDate * _Nullable expiryTime;
-@property (nonatomic, strong) NSDate * _Nullable displayTime;
-@property (nonatomic, copy) NSString * _Nullable payload;
-@property (nonatomic, copy) NSString * _Nullable displayStatus;
-@property (nonatomic, strong) NSNumber * _Nullable isUpdatedToServer;
-@end
-
 
 SWIFT_CLASS("_TtC3pai14PNInboxMessage")
 @interface PNInboxMessage : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nonnull pushId;
+@property (nonatomic, readonly, copy) NSString * _Nonnull customerId;
+@property (nonatomic, readonly, copy) NSString * _Nullable title;
+@property (nonatomic, readonly, copy) NSString * _Nullable body;
+@property (nonatomic, readonly, copy) NSDate * _Nullable expiryDate;
+@property (nonatomic, readonly, copy) NSString * _Nullable imageURL;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (BOOL)isUnread SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isDeleted SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)isRead SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-
-SWIFT_CLASS_NAMED("PNInboxMessageData")
-@interface PNInboxMessageData : NSManagedObject
-- (nonnull instancetype)initWithEntity:(NSEntityDescription * _Nonnull)entity insertIntoManagedObjectContext:(NSManagedObjectContext * _Nullable)context OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-
-
-
-
-
-
-@interface PNInboxMessageData (SWIFT_EXTENSION(pai))
-@property (nonatomic, copy) NSString * _Nullable customerId;
-@property (nonatomic, strong) NSDate * _Nullable expiryTime;
-@property (nonatomic, strong) NSNumber * _Nullable isUpdatedOnServer;
-@property (nonatomic, copy) NSString * _Nullable payload;
-@property (nonatomic, copy) NSString * _Nullable pushId;
-@property (nonatomic, strong) NSDate * _Nullable receivedTime;
-@property (nonatomic, copy) NSString * _Nullable tag;
-@property (nonatomic, strong) NSNumber * _Nullable isExpired;
 @end
 
 enum PNSDKMode : NSInteger;
@@ -1721,15 +1513,15 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @end
 
 
+
+
+
+
+
+
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
 - (PNChannel * _Nullable)getChannel SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
-
-
-
-
 
 
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
