@@ -231,9 +231,12 @@ SWIFT_CLASS("_TtC3pai14PNInboxMessage")
 @interface PNInboxMessage : NSObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull pushId;
 @property (nonatomic, readonly, copy) NSString * _Nonnull customerId;
+@property (nonatomic, readonly, copy) NSDate * _Nullable receivedTime;
+@property (nonatomic, readonly, copy) NSDictionary * _Nullable payload;
 @property (nonatomic, readonly, copy) NSString * _Nullable title;
 @property (nonatomic, readonly, copy) NSString * _Nullable body;
 @property (nonatomic, readonly, copy) NSDate * _Nullable expiryDate;
+@property (nonatomic, readonly, copy) NSDictionary * _Nullable extra;
 @property (nonatomic, readonly, copy) NSString * _Nullable imageURL;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (BOOL)isUnread SWIFT_WARN_UNUSED_RESULT;
@@ -273,10 +276,9 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @end
 
 
-
-
-
-
+@interface PNNotificationManager (SWIFT_EXTENSION(pai))
+- (NSString * _Nullable)getFCMToken SWIFT_WARN_UNUSED_RESULT;
+@end
 
 
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
@@ -284,12 +286,18 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @end
 
 
+
+
+
+
+
+
+
+
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull inboxListUpdatedNotification;)
 + (NSString * _Nonnull)inboxListUpdatedNotification SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
 
 @class UIApplication;
 @class UNUserNotificationCenter;
@@ -643,9 +651,12 @@ SWIFT_CLASS("_TtC3pai14PNInboxMessage")
 @interface PNInboxMessage : NSObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull pushId;
 @property (nonatomic, readonly, copy) NSString * _Nonnull customerId;
+@property (nonatomic, readonly, copy) NSDate * _Nullable receivedTime;
+@property (nonatomic, readonly, copy) NSDictionary * _Nullable payload;
 @property (nonatomic, readonly, copy) NSString * _Nullable title;
 @property (nonatomic, readonly, copy) NSString * _Nullable body;
 @property (nonatomic, readonly, copy) NSDate * _Nullable expiryDate;
+@property (nonatomic, readonly, copy) NSDictionary * _Nullable extra;
 @property (nonatomic, readonly, copy) NSString * _Nullable imageURL;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (BOOL)isUnread SWIFT_WARN_UNUSED_RESULT;
@@ -685,10 +696,9 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @end
 
 
-
-
-
-
+@interface PNNotificationManager (SWIFT_EXTENSION(pai))
+- (NSString * _Nullable)getFCMToken SWIFT_WARN_UNUSED_RESULT;
+@end
 
 
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
@@ -696,12 +706,18 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @end
 
 
+
+
+
+
+
+
+
+
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull inboxListUpdatedNotification;)
 + (NSString * _Nonnull)inboxListUpdatedNotification SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
 
 @class UIApplication;
 @class UNUserNotificationCenter;
@@ -1059,9 +1075,12 @@ SWIFT_CLASS("_TtC3pai14PNInboxMessage")
 @interface PNInboxMessage : NSObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull pushId;
 @property (nonatomic, readonly, copy) NSString * _Nonnull customerId;
+@property (nonatomic, readonly, copy) NSDate * _Nullable receivedTime;
+@property (nonatomic, readonly, copy) NSDictionary * _Nullable payload;
 @property (nonatomic, readonly, copy) NSString * _Nullable title;
 @property (nonatomic, readonly, copy) NSString * _Nullable body;
 @property (nonatomic, readonly, copy) NSDate * _Nullable expiryDate;
+@property (nonatomic, readonly, copy) NSDictionary * _Nullable extra;
 @property (nonatomic, readonly, copy) NSString * _Nullable imageURL;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (BOOL)isUnread SWIFT_WARN_UNUSED_RESULT;
@@ -1101,10 +1120,9 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @end
 
 
-
-
-
-
+@interface PNNotificationManager (SWIFT_EXTENSION(pai))
+- (NSString * _Nullable)getFCMToken SWIFT_WARN_UNUSED_RESULT;
+@end
 
 
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
@@ -1112,12 +1130,18 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @end
 
 
+
+
+
+
+
+
+
+
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull inboxListUpdatedNotification;)
 + (NSString * _Nonnull)inboxListUpdatedNotification SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
 
 @class UIApplication;
 @class UNUserNotificationCenter;
@@ -1471,9 +1495,12 @@ SWIFT_CLASS("_TtC3pai14PNInboxMessage")
 @interface PNInboxMessage : NSObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull pushId;
 @property (nonatomic, readonly, copy) NSString * _Nonnull customerId;
+@property (nonatomic, readonly, copy) NSDate * _Nullable receivedTime;
+@property (nonatomic, readonly, copy) NSDictionary * _Nullable payload;
 @property (nonatomic, readonly, copy) NSString * _Nullable title;
 @property (nonatomic, readonly, copy) NSString * _Nullable body;
 @property (nonatomic, readonly, copy) NSDate * _Nullable expiryDate;
+@property (nonatomic, readonly, copy) NSDictionary * _Nullable extra;
 @property (nonatomic, readonly, copy) NSString * _Nullable imageURL;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (BOOL)isUnread SWIFT_WARN_UNUSED_RESULT;
@@ -1513,10 +1540,9 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @end
 
 
-
-
-
-
+@interface PNNotificationManager (SWIFT_EXTENSION(pai))
+- (NSString * _Nullable)getFCMToken SWIFT_WARN_UNUSED_RESULT;
+@end
 
 
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
@@ -1524,12 +1550,18 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @end
 
 
+
+
+
+
+
+
+
+
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull inboxListUpdatedNotification;)
 + (NSString * _Nonnull)inboxListUpdatedNotification SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
 
 @class UIApplication;
 @class UNUserNotificationCenter;
