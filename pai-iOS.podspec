@@ -13,11 +13,10 @@ Pod::Spec.new do |s|
     s.source_files = "pai.framework/Headers/*.h"
     s.vendored_frameworks = "pai.framework"
     s.platform = :ios
-    s.swift_version = "5.0"
+    s.swift_version = "4.0"
     s.ios.deployment_target  = '10.0'
     s.frameworks = 'CoreServices'
     s.dependency 'FirebaseCore', '5.2.0'
     s.dependency 'FirebaseMessaging', '3.3.0'
-    s.dependency 'GzipSwift', '5.0.0'
-    s.dependency 'SQLite.swift', '0.12.0'
+    s.dependency 'SQLite.swift', '0.11.5'
 end
