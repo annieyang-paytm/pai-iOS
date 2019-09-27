@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.1.1"
+    s.version      = "5.1.3"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
         Notifications and campaign manager for Clients.
