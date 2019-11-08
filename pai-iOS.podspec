@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.1.6"
+    s.version      = "5.1.7"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
         Notifications and campaign manager for Clients.
@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
     s.swift_version = "5.0"
     s.ios.deployment_target  = '10.0'
     s.frameworks = 'CoreServices'
-    s.dependency 'FirebaseCore', '6.2.0'
+    s.dependency 'FirebaseCore', '6.3.2'
     s.dependency 'FirebaseMessaging', '4.1.0'
     s.dependency 'SQLite.swift', '0.12.0'
 end
