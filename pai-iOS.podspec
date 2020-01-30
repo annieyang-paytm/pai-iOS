@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.1.8"
+    s.version      = "5.1.9"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
         Notifications and campaign manager for Clients.
 	In Sync with 4.1.0 (which is for XCode 10)
         Includes : Retrial mechanisms for register/update token, dependencies updated.
-        Compatibility - XCode 11 and +
+        Compatibility - XCode 11 and + (Added missing flags)
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAMA/iOS+Notification+SDK"
     s.license = { :type => 'MIT', :file => 'LICENSE' }

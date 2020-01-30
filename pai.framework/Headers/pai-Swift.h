@@ -363,7 +363,7 @@ SWIFT_CLASS("_TtC3pai30PNNotificationServiceExtension")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-typedef SWIFT_ENUM(NSInteger, PNSDKMode, closed) {
+typedef SWIFT_ENUM(NSInteger, PNSDKMode, open) {
   PNSDKModeServerLogin = 1,
   PNSDKModeClientLogin = 2,
 };
@@ -799,7 +799,7 @@ SWIFT_CLASS("_TtC3pai30PNNotificationServiceExtension")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-typedef SWIFT_ENUM(NSInteger, PNSDKMode, closed) {
+typedef SWIFT_ENUM(NSInteger, PNSDKMode, open) {
   PNSDKModeServerLogin = 1,
   PNSDKModeClientLogin = 2,
 };
@@ -1239,7 +1239,7 @@ SWIFT_CLASS("_TtC3pai30PNNotificationServiceExtension")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-typedef SWIFT_ENUM(NSInteger, PNSDKMode, closed) {
+typedef SWIFT_ENUM(NSInteger, PNSDKMode, open) {
   PNSDKModeServerLogin = 1,
   PNSDKModeClientLogin = 2,
 };
@@ -1675,7 +1675,7 @@ SWIFT_CLASS("_TtC3pai30PNNotificationServiceExtension")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-typedef SWIFT_ENUM(NSInteger, PNSDKMode, closed) {
+typedef SWIFT_ENUM(NSInteger, PNSDKMode, open) {
   PNSDKModeServerLogin = 1,
   PNSDKModeClientLogin = 2,
 };
