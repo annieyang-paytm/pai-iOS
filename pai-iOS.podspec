@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAMA/iOS+Notification+SDK"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
-    s.author             = { 'Gaurav Sharma' => 'gaurav18.sharma@paytm.com' }
+    s.author             = { 'Annie Yang' => 'annie.yang@paytm.com' }
     s.source       = { :git => 'https://github.com/midgardev/pai-iOS.git', :tag => s.version.to_s }
     s.public_header_files = "pai.framework/Headers/*.h"
     s.source_files = "pai.framework/Headers/*.h"
