@@ -1,17 +1,16 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.2.0"
+    s.version      = "5.3.0"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	Inbox title change fixed (v2)
-        Notifications and campaign manager for Clients.
-	In Sync with 4.1.0 (which is for XCode 10)
-        Includes : Retrial mechanisms for register/update token, dependencies updated.
-        Compatibility - XCode 11 and + (Added missing flags)
+	Add silent push support
+	Modify flash push behaviour
+        Define two modes: default mode - the same behaviour as 5.2.0
+                          instant display mode - flash banner will show up when app is in foreground
     DESC
-    s.homepage     = "https://wiki.mypaytm.com/display/MAMA/iOS+Notification+SDK"
+    s.homepage     = "https://wiki.mypaytm.com/display/MAP/iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
-    s.author             = { 'Gaurav Sharma' => 'gaurav18.sharma@paytm.com' }
+    s.author             = { 'Annie Yang' => 'annie.yang@paytm.com' }
     s.source       = { :git => 'https://github.com/midgardev/pai-iOS.git', :tag => s.version.to_s }
     s.public_header_files = "pai.framework/Headers/*.h"
     s.source_files = "pai.framework/Headers/*.h"

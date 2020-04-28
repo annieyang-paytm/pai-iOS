@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.1 effective-4.1.50 (swiftlang-1100.0.270.13 clang-1100.0.33.7)
+// swift-compiler-version: Apple Swift version 5.1.3 effective-4.1.50 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
 // swift-module-flags: -target x86_64-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 4 -enforce-exclusivity=checked -O -module-name pai
 import CommonCrypto
 import CoreData
@@ -156,6 +156,12 @@ public struct JobInfo {
 public class PNPushNotification {
   @objc deinit
 }
+public class PNSilentNotification {
+  final public let customerId: Swift.String?
+  final public let userInfo: [Swift.AnyHashable : Any]
+  final public let extraInfo: [Swift.AnyHashable : Any]?
+  @objc deinit
+}
 public class V1Serializer : pai.JobInfoSerializer {
   public func serialize(info: pai.JobInfo) throws -> Swift.String
   public func deserialize(json: Swift.String) throws -> pai.JobInfo
@@ -263,7 +269,7 @@ final public class SwiftQueueManagerBuilder {
   public var delegate: pai.PNPTMPushNotificationDelegate?
   @objc public static func sharedInstance() -> pai.PNNotificationManager
   @objc deinit
-  @objc public func start(appGroupName: Swift.String, clientId: Swift.String, key: Swift.String, loggedInUserId: Swift.String?, firebaseConfigFile: Swift.String? = nil, isStaging: Swift.Bool = false, sdkMode: pai.PNSDKMode = .serverLogin, configEndPoint: Swift.String? = nil)
+  public func start(appGroupName: Swift.String, clientId: Swift.String, key: Swift.String, loggedInUserId: Swift.String?, firebaseConfigFile: Swift.String? = nil, isStaging: Swift.Bool = false, sdkMode: pai.PNSDKMode = .serverLogin, configEndPoint: Swift.String? = nil, flashMode: pai.PNFlashMode = .defaultMode, flashPrimaryColorInHex: Swift.String? = nil, flashSecondaryColorInHex: Swift.String? = nil)
   @objc public func deleteConfig(completion: ((Swift.Bool) -> Swift.Void)?)
   @objc public func checkBuildStatus(isStaging: Swift.Bool, completion: ((Swift.Bool) -> ())?)
 }
@@ -290,6 +296,9 @@ extension PNNotificationManager {
   @objc dynamic public func messageDisplayed(message: pai.PNInboxMessage)
 }
 extension PNNotificationManager {
+  @objc dynamic public func flashViewRemoved()
+}
+extension PNNotificationManager {
   @objc dynamic public func getChannel() -> pai.PNChannel?
 }
 extension PNNotificationManager {
@@ -299,6 +308,24 @@ extension PNNotificationManager {
   @objc public static let inboxListUpdatedNotification: Swift.String
 }
 public typealias PNInboxCompletion = (Swift.Array<pai.PNInboxMessage>) -> ()
+public enum PNFlashMode : Swift.Int {
+  case defaultMode
+  case instantDisplayMode
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum PNSDKMode : Swift.Int {
+  case serverLogin
+  case clientLogin
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 public enum PNInboxMessageReadStatus : Swift.String {
   case read, unread, deleted
   public typealias RawValue = Swift.String
@@ -306,14 +333,6 @@ public enum PNInboxMessageReadStatus : Swift.String {
     get
   }
   public init?(rawValue: Swift.String)
-}
-@objc public enum PNSDKMode : Swift.Int {
-  case serverLogin = 1, clientLogin = 2
-  public typealias RawValue = Swift.Int
-  public init?(rawValue: Swift.Int)
-  public var rawValue: Swift.Int {
-    get
-  }
 }
 @objc public class PNSignalSession : pai.PNSignalBaseSession {
   public static func push(signalLog: pai.PNSignalLog)
@@ -355,11 +374,19 @@ public protocol PNPTMPushNotificationDelegate {
   func received(deepLink: pai.PNDeeplink?)
   func topViewController() -> UIKit.UIViewController?
   func sharedApplication() -> UIKit.UIApplication?
-  func inboxListUpdated()
   func didRecieve(channel: pai.PNChannel)
+  func receivedSilentPush(_ silentNotification: pai.PNSilentNotification)
+  func willDisplayFlashMessage(with payload: [Swift.AnyHashable : Any]?, appearanceConfigurator: pai.PNFlashAppearanceConfigurator)
+  func didDisplayFlashMessage(with payload: [Swift.AnyHashable : Any]?)
+  func inboxListUpdated()
 }
 extension PNPTMPushNotificationDelegate {
   public func inboxListUpdated()
+  public func willDisplayFlashMessage(with payload: [Swift.AnyHashable : Any]?, appearanceConfigurator: pai.PNFlashAppearanceConfigurator)
+  public func didDisplayFlashMessage(with payload: [Swift.AnyHashable : Any]?)
+}
+extension UIColor {
+  convenience public init?(hex: Swift.String)
 }
 @objc public class PNSignalConfiguration : ObjectiveC.NSObject {
   public static func initializePASignalSession(signalType: pai.PNType, withUniqueIdentifier uniqueIdentifier: Swift.String = PNSignalConstant.PA_EVENT_DEFAULT_UNIQUE_ID, isLogginEnabled loggingEnabled: Swift.Bool = PNSignalConstant.PA_EVENT_DEFAULT_LOGGING_ENABLED, withDispatchStrategy dispatchStrategy: pai.PNDispatchStrategy = PNSignalConstant.PA_EVENT_DEFAULT_DISPATCH_STRATEGY, withDispatchInterval dispatchInterval: Foundation.TimeInterval = PNSignalConstant.PA_NC_DEFAULT_DISPATCH_INTERVAL, andMaxBatchSizeToUpload maxBatchSizeToUpload: Swift.Int = PNSignalConstant.PA_EVENT_DEFAULT_MAX_BATCH_UPLOAD, andMaxBatchSizeToCapture maxBatchSizeToCapture: Swift.Int = PNSignalConstant.PA_EVENT_DEFAULT_MAX_BATCH_CAPTURE, andRequestUrl urlString: Swift.String = "", clientId: Swift.String)
@@ -391,6 +418,9 @@ extension PNSignalDispatcher {
   final public func dictionaryRepresentation() -> [Swift.String : Any]
   @objc final public func encode(with aCoder: Foundation.NSCoder)
   @objc public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+public class PNFlashAppearanceConfigurator {
   @objc deinit
 }
 public class PNDeeplink {
@@ -486,10 +516,12 @@ public enum PNType {
 extension pai.NetworkType : Swift.Equatable {}
 extension pai.NetworkType : Swift.Hashable {}
 extension pai.NetworkType : Swift.RawRepresentable {}
-extension pai.PNInboxMessageReadStatus : Swift.Hashable {}
-extension pai.PNInboxMessageReadStatus : Swift.RawRepresentable {}
+extension pai.PNFlashMode : Swift.Hashable {}
+extension pai.PNFlashMode : Swift.RawRepresentable {}
 extension pai.PNSDKMode : Swift.Hashable {}
 extension pai.PNSDKMode : Swift.RawRepresentable {}
+extension pai.PNInboxMessageReadStatus : Swift.Hashable {}
+extension pai.PNInboxMessageReadStatus : Swift.RawRepresentable {}
 extension pai.LogLevel : Swift.Equatable {}
 extension pai.LogLevel : Swift.Hashable {}
 extension pai.LogLevel : Swift.RawRepresentable {}
