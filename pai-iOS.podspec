@@ -1,12 +1,9 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.0"
+    s.version      = "5.3.1"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	Add silent push support
-	Modify flash push behaviour
-        Define two modes: default mode - the same behaviour as 5.2.0
-                          instant display mode - flash banner will show up when app is in foreground
+	Fix a bug in transctional flash banner
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
