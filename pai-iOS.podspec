@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.1"
+    s.version      = "5.3.1.1"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
 	Fix a bug in transctional flash banner
