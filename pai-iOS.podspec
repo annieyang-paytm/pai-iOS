@@ -1,10 +1,9 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.2"
+    s.version      = "5.3.2.1"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	Fix a bug in transctional flash type, and add default expiry data
-    Change deployment target to 11.0
+	Add messaging delegate and remove messaging notification 
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
