@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.2.2 effective-4.1.50 (swiftlang-1103.0.32.6 clang-1103.0.32.51)
-// swift-module-flags: -target x86_64-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 4 -enforce-exclusivity=checked -O -module-name pai
+// swift-compiler-version: Apple Swift version 5.1.3 effective-4.1.50 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 4 -enforce-exclusivity=checked -O -module-name pai
 import CommonCrypto
 import CoreData
 import CoreLocation
@@ -27,7 +27,7 @@ extension JobInfo : Swift.Decodable {
 extension JobInfo : Swift.Encodable {
   public func encode(to encoder: Swift.Encoder) throws
 }
-@objc @_inheritsConvenienceInitializers open class CornerRoundingView : UIKit.UIView {
+@objc open class CornerRoundingView : UIKit.UIView {
   @objc @IBInspectable open var cornerRadius: CoreGraphics.CGFloat {
     @objc get
     @objc set
@@ -69,18 +69,18 @@ final public class JobBuilder {
 }
 @objc @objcMembers public class PNUser : ObjectiveC.NSObject {
   @objc public init(userId: Swift.String, ssoToken: Swift.String)
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
-@objc @_inheritsConvenienceInitializers open class PNNotificationServiceExtension : UserNotifications.UNNotificationServiceExtension {
+@objc open class PNNotificationServiceExtension : UserNotifications.UNNotificationServiceExtension {
   @objc override dynamic open func didReceive(_ request: UserNotifications.UNNotificationRequest, withContentHandler contentHandler: @escaping (UserNotifications.UNNotificationContent) -> Swift.Void)
   @objc override dynamic open func serviceExtensionTimeWillExpire()
   open func start() -> pai.PNExtesnionConfig?
   open func handleSDKFailure(_ request: UserNotifications.UNNotificationRequest, withContentHandler contentHandler: @escaping (UserNotifications.UNNotificationContent) -> Swift.Void)
   open func handleServiceExtensionTimeWillExpire()
   open func getHmacKey(isStaging: Swift.Bool) -> Swift.String?
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 public struct PNExtesnionConfig {
   public init(appGroupName: Swift.String, clientId: Swift.String, hMacKey: Swift.String)
@@ -93,9 +93,9 @@ public class UserDefaultsPersister : pai.JobPersister {
   public func remove(queueName: Swift.String, taskId: Swift.String)
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers public class PNSignalBaseSession : ObjectiveC.NSObject {
-  @objc deinit
+@objc public class PNSignalBaseSession : ObjectiveC.NSObject {
   @objc override dynamic public init()
+  @objc deinit
 }
 public enum NetworkType : Swift.Int, Swift.Codable {
   case any
@@ -114,36 +114,36 @@ public enum RetryConstraint {
 }
 public struct JobInfo {
 }
-@objc @_hasMissingDesignatedInitializers @objcMembers public class PNInboxMessage : ObjectiveC.NSObject {
+@objc @objcMembers public class PNInboxMessage : ObjectiveC.NSObject {
   @objc final public let pushId: Swift.String
   @objc final public let customerId: Swift.String
   public var readStatus: pai.PNInboxMessageReadStatus? {
     get
-  }
+    }
   @objc public var receivedTime: Foundation.Date? {
     get
-  }
+    }
   @objc public var payload: Swift.Dictionary<Swift.AnyHashable, Any>? {
     get
-  }
+    }
   @objc public var title: Swift.String? {
     get
-  }
+    }
   @objc public var body: Swift.String? {
     get
-  }
+    }
   @objc public var expiryDate: Foundation.Date? {
     get
-  }
+    }
   public var deepLink: pai.PNDeeplink? {
     get
-  }
+    }
   @objc public var extra: Swift.Dictionary<Swift.AnyHashable, Any>? {
     get
-  }
+    }
   @objc public var imageURL: Swift.String? {
     get
-  }
+    }
   @objc override dynamic public var description: Swift.String {
     @objc get
   }
@@ -153,21 +153,21 @@ public struct JobInfo {
   @objc override dynamic public init()
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class PNPushNotification {
+public class PNPushNotification {
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class PNSilentNotification {
+public class PNSilentNotification {
   final public let customerId: Swift.String?
   final public let userInfo: [Swift.AnyHashable : Any]
   final public let extraInfo: [Swift.AnyHashable : Any]?
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class V1Serializer : pai.JobInfoSerializer {
+public class V1Serializer : pai.JobInfoSerializer {
   public func serialize(info: pai.JobInfo) throws -> Swift.String
   public func deserialize(json: Swift.String) throws -> pai.JobInfo
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class PNPushButton {
+public class PNPushButton {
   final public let groupId: Swift.String
   final public let buttonId: Swift.String
   final public let title: Swift.String
@@ -239,7 +239,7 @@ public enum SwiftQueueError : Swift.Error {
   case duplicate
   case onRetryCancel(Swift.Error)
 }
-@_hasMissingDesignatedInitializers final public class SwiftQueueManager {
+final public class SwiftQueueManager {
   final public var isSuspended: Swift.Bool {
     get
     set
@@ -265,7 +265,7 @@ final public class SwiftQueueManagerBuilder {
   final public func build() -> pai.SwiftQueueManager
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class PNNotificationManager : ObjectiveC.NSObject {
+@objc @objcMembers public class PNNotificationManager : ObjectiveC.NSObject {
   public var delegate: pai.PNPTMPushNotificationDelegate?
   @objc public static func sharedInstance() -> pai.PNNotificationManager
   @objc deinit
@@ -321,10 +321,10 @@ public enum PNSDKMode : Swift.Int {
   case serverLogin
   case clientLogin
   public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
-  public init?(rawValue: Swift.Int)
 }
 public enum PNInboxMessageReadStatus : Swift.String {
   case read, unread, deleted
@@ -334,10 +334,10 @@ public enum PNInboxMessageReadStatus : Swift.String {
   }
   public init?(rawValue: Swift.String)
 }
-@objc @_inheritsConvenienceInitializers public class PNSignalSession : pai.PNSignalBaseSession {
+@objc public class PNSignalSession : pai.PNSignalBaseSession {
   public static func push(signalLog: pai.PNSignalLog)
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 public enum LogLevel : Swift.Int {
   case verbose
@@ -363,7 +363,7 @@ open class ConsoleLogger : pai.SwiftQueueLogger {
   open func printComputed(output: Swift.String)
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class NoLogger : pai.SwiftQueueLogger {
+public class NoLogger : pai.SwiftQueueLogger {
   public static let shared: pai.NoLogger
   public func log(_ level: pai.LogLevel, jobId: @autoclosure () -> Swift.String, message: @autoclosure () -> Swift.String)
   @objc deinit
@@ -388,22 +388,22 @@ extension PNPTMPushNotificationDelegate {
 extension UIColor {
   convenience public init?(hex: Swift.String)
 }
-@objc @_inheritsConvenienceInitializers public class PNSignalConfiguration : ObjectiveC.NSObject {
+@objc public class PNSignalConfiguration : ObjectiveC.NSObject {
   public static func initializePASignalSession(signalType: pai.PNType, withUniqueIdentifier uniqueIdentifier: Swift.String = PNSignalConstant.PA_EVENT_DEFAULT_UNIQUE_ID, isLogginEnabled loggingEnabled: Swift.Bool = PNSignalConstant.PA_EVENT_DEFAULT_LOGGING_ENABLED, withDispatchStrategy dispatchStrategy: pai.PNDispatchStrategy = PNSignalConstant.PA_EVENT_DEFAULT_DISPATCH_STRATEGY, withDispatchInterval dispatchInterval: Foundation.TimeInterval = PNSignalConstant.PA_NC_DEFAULT_DISPATCH_INTERVAL, andMaxBatchSizeToUpload maxBatchSizeToUpload: Swift.Int = PNSignalConstant.PA_EVENT_DEFAULT_MAX_BATCH_UPLOAD, andMaxBatchSizeToCapture maxBatchSizeToCapture: Swift.Int = PNSignalConstant.PA_EVENT_DEFAULT_MAX_BATCH_CAPTURE, andRequestUrl urlString: Swift.String = "", clientId: Swift.String)
   public static func initializeDatastore(signalType: pai.PNType)
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
-@_inheritsConvenienceInitializers @objc public class PNSignalDispatcher : ObjectiveC.NSObject {
+@objc public class PNSignalDispatcher : ObjectiveC.NSObject {
   @objc public static let eventSharedDispatcher: pai.PNSignalDispatcher
   @objc public static let pushSharedDispatcher: pai.PNSignalDispatcher
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 extension PNSignalDispatcher {
   @objc dynamic public func dispatch()
 }
-@objc @_inheritsConvenienceInitializers final public class PNSignalLog : ObjectiveC.NSObject, Foundation.NSCoding {
+@objc final public class PNSignalLog : ObjectiveC.NSObject, Foundation.NSCoding {
   @objc override dynamic public init()
   @objc override final public var description: Swift.String {
     @objc get
@@ -420,10 +420,10 @@ extension PNSignalDispatcher {
   @objc public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class PNFlashAppearanceConfigurator {
+public class PNFlashAppearanceConfigurator {
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class PNDeeplink {
+public class PNDeeplink {
   public var deepLinkString: Swift.String?
   public var deepLinkDict: Swift.Dictionary<Swift.AnyHashable, Any>?
   @objc deinit
@@ -447,7 +447,7 @@ public enum PNType {
   }
   public func hash(into hasher: inout Swift.Hasher)
 }
-@objc @_inheritsConvenienceInitializers public class PNSignalConstant : ObjectiveC.NSObject {
+@objc public class PNSignalConstant : ObjectiveC.NSObject {
   public static var PA_NC_DEFAULT_DISPATCH_INTERVAL: Foundation.TimeInterval {
     get
   }
@@ -505,10 +505,10 @@ public enum PNType {
   public static var PA_COL_EVENT_IS_STAGED: Swift.String {
     get
   }
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
-@objc @_hasMissingDesignatedInitializers public class PNChannel : ObjectiveC.NSObject {
+@objc public class PNChannel : ObjectiveC.NSObject {
   final public let channelId: Swift.String
   @objc override dynamic public init()
   @objc deinit
@@ -516,13 +516,10 @@ public enum PNType {
 extension pai.NetworkType : Swift.Equatable {}
 extension pai.NetworkType : Swift.Hashable {}
 extension pai.NetworkType : Swift.RawRepresentable {}
-extension pai.PNFlashMode : Swift.Equatable {}
 extension pai.PNFlashMode : Swift.Hashable {}
 extension pai.PNFlashMode : Swift.RawRepresentable {}
-extension pai.PNSDKMode : Swift.Equatable {}
 extension pai.PNSDKMode : Swift.Hashable {}
 extension pai.PNSDKMode : Swift.RawRepresentable {}
-extension pai.PNInboxMessageReadStatus : Swift.Equatable {}
 extension pai.PNInboxMessageReadStatus : Swift.Hashable {}
 extension pai.PNInboxMessageReadStatus : Swift.RawRepresentable {}
 extension pai.LogLevel : Swift.Equatable {}
