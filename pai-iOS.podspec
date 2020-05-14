@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.2.1"
+    s.version      = "5.3.2.2"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
 	Add messaging delegate and remove messaging notification 
