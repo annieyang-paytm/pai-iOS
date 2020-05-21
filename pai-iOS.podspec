@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.2.2"
+    s.version      = "5.3.3"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	Add messaging delegate and remove messaging notification 
+	Fix a bug where SDK failed to fetch GoogleService-Info.plist file 
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
