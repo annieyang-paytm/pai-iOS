@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
     s.source_files = "pai.framework/Headers/*.h"
     s.vendored_frameworks = "pai.framework"
     s.platform = :ios
-    s.swift_version = "5.0"
+    s.swift_version = "4.0"
     s.ios.deployment_target  = '11.0'
     s.frameworks = 'CoreServices'
     s.dependency 'FirebaseRemoteConfig'
