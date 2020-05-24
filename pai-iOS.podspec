@@ -3,7 +3,8 @@ Pod::Spec.new do |s|
     s.version      = "5.3.3.2"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	Fix a bug where SDK failed to fetch GoogleService-Info.plist file 
+	Provide a new delegate to return RemoteConfig object
+    Make Protobuf and nanopb to fixed versions
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
