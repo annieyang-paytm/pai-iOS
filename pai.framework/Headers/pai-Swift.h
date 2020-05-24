@@ -296,8 +296,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 
 
 
-
-
 @class PNUser;
 
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
@@ -310,6 +308,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 - (BOOL)isUserIdAvailable SWIFT_WARN_UNUSED_RESULT;
 - (void)requiresUpdateWithUser:(PNUser * _Nonnull)user;
 @end
+
+
 
 
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
@@ -713,8 +713,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 
 
 
-
-
 @class PNUser;
 
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
@@ -727,6 +725,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 - (BOOL)isUserIdAvailable SWIFT_WARN_UNUSED_RESULT;
 - (void)requiresUpdateWithUser:(PNUser * _Nonnull)user;
 @end
+
+
 
 
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))

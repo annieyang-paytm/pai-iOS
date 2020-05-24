@@ -9,6 +9,7 @@ import DataCompression
 import Dispatch
 import FirebaseCore
 import FirebaseMessaging
+import FirebaseRemoteConfig
 import Foundation
 import SQLite
 import Swift
@@ -372,6 +373,7 @@ public typealias NotificationDataCompletion = ([pai.PNPTMPushNotificationDelegat
 public protocol PNPTMPushNotificationDelegate {
   func deviceLanguage() -> Swift.String?
   func received(deepLink: pai.PNDeeplink?)
+  func didReceive(remoteConfig: pai.PNFirebaseRemoteConfig)
   func topViewController() -> UIKit.UIViewController?
   func sharedApplication() -> UIKit.UIApplication?
   func didRecieve(channel: pai.PNChannel)
@@ -382,6 +384,7 @@ public protocol PNPTMPushNotificationDelegate {
 }
 extension PNPTMPushNotificationDelegate {
   public func inboxListUpdated()
+  public func didReceive(remoteConfig: pai.PNFirebaseRemoteConfig)
   public func willDisplayFlashMessage(with payload: [Swift.AnyHashable : Any]?, appearanceConfigurator: pai.PNFlashAppearanceConfigurator)
   public func didDisplayFlashMessage(with payload: [Swift.AnyHashable : Any]?)
 }
@@ -392,6 +395,10 @@ extension UIColor {
   public static func initializePASignalSession(signalType: pai.PNType, withUniqueIdentifier uniqueIdentifier: Swift.String = PNSignalConstant.PA_EVENT_DEFAULT_UNIQUE_ID, isLogginEnabled loggingEnabled: Swift.Bool = PNSignalConstant.PA_EVENT_DEFAULT_LOGGING_ENABLED, withDispatchStrategy dispatchStrategy: pai.PNDispatchStrategy = PNSignalConstant.PA_EVENT_DEFAULT_DISPATCH_STRATEGY, withDispatchInterval dispatchInterval: Foundation.TimeInterval = PNSignalConstant.PA_NC_DEFAULT_DISPATCH_INTERVAL, andMaxBatchSizeToUpload maxBatchSizeToUpload: Swift.Int = PNSignalConstant.PA_EVENT_DEFAULT_MAX_BATCH_UPLOAD, andMaxBatchSizeToCapture maxBatchSizeToCapture: Swift.Int = PNSignalConstant.PA_EVENT_DEFAULT_MAX_BATCH_CAPTURE, andRequestUrl urlString: Swift.String = "", clientId: Swift.String)
   public static func initializeDatastore(signalType: pai.PNType)
   @objc override dynamic public init()
+  @objc deinit
+}
+public class PNFirebaseRemoteConfig {
+  final public let firebaseRemoteConfig: FirebaseRemoteConfig.RemoteConfig
   @objc deinit
 }
 @objc public class PNSignalDispatcher : ObjectiveC.NSObject {
