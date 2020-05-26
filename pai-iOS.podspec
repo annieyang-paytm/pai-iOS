@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.3.2"
+    s.version      = "5.3.4"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	Provide a new delegate to return RemoteConfig object
-    Make Protobuf and nanopb to fixed versions
+	1) Fix the issue that big picture notification does not work properly;
+    2) Fix the archive issue related to Google Utilities frameworks
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
@@ -20,6 +20,7 @@ Pod::Spec.new do |s|
     s.dependency 'FirebaseRemoteConfig'
     s.dependency 'FirebaseCore', '6.6.0'
     s.dependency 'FirebaseMessaging', '4.2.0'
+    s.dependency 'Firebase/Analytics'
     s.dependency 'SQLite.swift', '0.12.0'
     s.dependency 'DataCompression', '3.1.0'
 

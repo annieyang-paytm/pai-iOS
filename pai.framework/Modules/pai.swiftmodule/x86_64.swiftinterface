@@ -322,10 +322,10 @@ public enum PNSDKMode : Swift.Int {
   case serverLogin
   case clientLogin
   public typealias RawValue = Swift.Int
-  public init?(rawValue: Swift.Int)
   public var rawValue: Swift.Int {
     get
   }
+  public init?(rawValue: Swift.Int)
 }
 public enum PNInboxMessageReadStatus : Swift.String {
   case read, unread, deleted
@@ -525,6 +525,7 @@ extension pai.NetworkType : Swift.Hashable {}
 extension pai.NetworkType : Swift.RawRepresentable {}
 extension pai.PNFlashMode : Swift.Hashable {}
 extension pai.PNFlashMode : Swift.RawRepresentable {}
+extension pai.PNSDKMode : Swift.Equatable {}
 extension pai.PNSDKMode : Swift.Hashable {}
 extension pai.PNSDKMode : Swift.RawRepresentable {}
 extension pai.PNInboxMessageReadStatus : Swift.Hashable {}
