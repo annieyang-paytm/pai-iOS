@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.4.1"
+    s.version      = "5.3.4.2"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
 	1) Fix the issue that big picture notification does not work properly;
