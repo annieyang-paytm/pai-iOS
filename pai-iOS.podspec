@@ -3,8 +3,8 @@ Pod::Spec.new do |s|
     s.version      = "5.3.5"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	1) Fix the issue that big picture notification does not work properly;
-    2) Fix the archive issue related to Google Utilities frameworks
+	1) Expose FirebaseCrashlytics to the app-side
+    2) Minor bugs fix
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
