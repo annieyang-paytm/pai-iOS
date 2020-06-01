@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.4.3"
+    s.version      = "5.3.5"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
 	1) Fix the issue that big picture notification does not work properly;
@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
     s.frameworks = 'CoreServices'
     s.dependency 'FirebaseRemoteConfig'
     s.dependency 'FirebasePerformance'
+    s.dependency 'FirebaseCrashlytics'
     s.dependency 'FirebaseCore', '6.6.0'
     s.dependency 'FirebaseMessaging', '4.2.0'
     s.dependency 'Firebase/Analytics'

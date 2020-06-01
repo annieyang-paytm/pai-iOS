@@ -262,16 +262,11 @@ SWIFT_CLASS("_TtC3pai14PNInboxMessage")
 
 SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @interface PNNotificationManager : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
-+ (PNNotificationManager * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (void)deleteConfigWithCompletion:(void (^ _Nullable)(BOOL))completion;
 - (void)checkBuildStatusWithIsStaging:(BOOL)isStaging completion:(void (^ _Nullable)(BOOL))completion;
-@end
-
-
-@interface PNNotificationManager (SWIFT_EXTENSION(pai))
-- (NSString * _Nullable)getFCMToken SWIFT_WARN_UNUSED_RESULT;
++ (PNNotificationManager * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
 
@@ -282,16 +277,13 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @end
 
 
+
+
+
+
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
+- (NSString * _Nullable)getFCMToken SWIFT_WARN_UNUSED_RESULT;
 - (PNChannel * _Nullable)getChannel SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-
-
-@interface PNNotificationManager (SWIFT_EXTENSION(pai))
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull inboxListUpdatedNotification;)
-+ (NSString * _Nonnull)inboxListUpdatedNotification SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -299,23 +291,21 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @class PNUser;
 
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
-/// Registers user with FCM token on server
-/// \param user User object.
-///
 - (void)loginWithUser:(NSString * _Nonnull)user;
-/// Deregisters token with user on server.
 - (void)logout;
 - (BOOL)isUserIdAvailable SWIFT_WARN_UNUSED_RESULT;
 - (void)requiresUpdateWithUser:(PNUser * _Nonnull)user;
 @end
 
 
-
-
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
 - (NSArray<PNInboxMessage *> * _Nonnull)fetchInboxMessages SWIFT_WARN_UNUSED_RESULT;
 - (void)syncInboxMessages;
-- (void)markMessagesReadWithInboxMessages:(NSArray<PNInboxMessage *> * _Nonnull)inboxMessages completion:(void (^ _Nullable)(BOOL))completion;
+/// Marks the given inbox messages as read
+/// Please note that mark as read operations will be queued and dispatched more efficiently by the SDK itself so
+/// that you don’t need to worry about when or how it completes, the SDK will handle any error occurred
+- (void)markMessagesReadWithInboxMessages:(NSArray<PNInboxMessage *> * _Nonnull)inboxMessages;
+- (void)markMessagesReadWithInboxMessages:(NSArray<PNInboxMessage *> * _Nonnull)inboxMessages completion:(void (^ _Nullable)(BOOL))completion SWIFT_DEPRECATED_MSG("\n                                                                                    You're encouraged to use the renamed version of this api which doesn't provide the completion block anymore,\n                                                                                    in the new api, mark as read operations will be queued and dispatched more efficiently by the SDK itself so\n                                                                                    that you don't need to worry about when or how it completes, the SDK will handle any error occurred\n                                                                                    ", "markMessagesReadWithInboxMessages:");
 - (void)markMessagesUnReadWithInboxMessages:(NSArray<PNInboxMessage *> * _Nonnull)inboxMessages completion:(void (^ _Nullable)(BOOL))completion;
 - (void)deleteWithInboxMessages:(NSArray<PNInboxMessage *> * _Nonnull)inboxMessages completion:(void (^ _Nullable)(BOOL))completion;
 - (void)didClickedWithMessage:(PNInboxMessage * _Nonnull)message initiateDeepLink:(BOOL)initiateDeepLink;
@@ -324,15 +314,15 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 
 @class UIApplication;
 @class UNUserNotificationCenter;
-@class UNNotificationResponse;
 @class UNNotification;
+@class UNNotificationResponse;
 
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
 - (void)application:(UIApplication * _Nonnull)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)deviceToken;
 - (void)application:(UIApplication * _Nonnull)application didFailToRegisterForRemoteNotificationsWithError:(NSError * _Nonnull)error;
-- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceive:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
 - (void)application:(UIApplication * _Nullable)application receiveRemoteNotification:(NSDictionary * _Nullable)userInfo handler:(void (^ _Nullable)(UIBackgroundFetchResult))completionHandler;
 - (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresent:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
+- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceive:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
 @end
 
 @class UNNotificationRequest;
@@ -386,9 +376,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PNSignalDisp
 SWIFT_CLASS("_TtC3pai11PNSignalLog")
 @interface PNSignalLog : NSObject <NSCoding>
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (void)encodeWithCoder:(NSCoder * _Nonnull)aCoder;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 @end
 
 
@@ -679,16 +669,11 @@ SWIFT_CLASS("_TtC3pai14PNInboxMessage")
 
 SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @interface PNNotificationManager : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
-+ (PNNotificationManager * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (void)deleteConfigWithCompletion:(void (^ _Nullable)(BOOL))completion;
 - (void)checkBuildStatusWithIsStaging:(BOOL)isStaging completion:(void (^ _Nullable)(BOOL))completion;
-@end
-
-
-@interface PNNotificationManager (SWIFT_EXTENSION(pai))
-- (NSString * _Nullable)getFCMToken SWIFT_WARN_UNUSED_RESULT;
++ (PNNotificationManager * _Nonnull)sharedInstance SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
 
@@ -699,16 +684,13 @@ SWIFT_CLASS("_TtC3pai21PNNotificationManager")
 @end
 
 
+
+
+
+
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
+- (NSString * _Nullable)getFCMToken SWIFT_WARN_UNUSED_RESULT;
 - (PNChannel * _Nullable)getChannel SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-
-
-@interface PNNotificationManager (SWIFT_EXTENSION(pai))
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull inboxListUpdatedNotification;)
-+ (NSString * _Nonnull)inboxListUpdatedNotification SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -716,23 +698,21 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @class PNUser;
 
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
-/// Registers user with FCM token on server
-/// \param user User object.
-///
 - (void)loginWithUser:(NSString * _Nonnull)user;
-/// Deregisters token with user on server.
 - (void)logout;
 - (BOOL)isUserIdAvailable SWIFT_WARN_UNUSED_RESULT;
 - (void)requiresUpdateWithUser:(PNUser * _Nonnull)user;
 @end
 
 
-
-
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
 - (NSArray<PNInboxMessage *> * _Nonnull)fetchInboxMessages SWIFT_WARN_UNUSED_RESULT;
 - (void)syncInboxMessages;
-- (void)markMessagesReadWithInboxMessages:(NSArray<PNInboxMessage *> * _Nonnull)inboxMessages completion:(void (^ _Nullable)(BOOL))completion;
+/// Marks the given inbox messages as read
+/// Please note that mark as read operations will be queued and dispatched more efficiently by the SDK itself so
+/// that you don’t need to worry about when or how it completes, the SDK will handle any error occurred
+- (void)markMessagesReadWithInboxMessages:(NSArray<PNInboxMessage *> * _Nonnull)inboxMessages;
+- (void)markMessagesReadWithInboxMessages:(NSArray<PNInboxMessage *> * _Nonnull)inboxMessages completion:(void (^ _Nullable)(BOOL))completion SWIFT_DEPRECATED_MSG("\n                                                                                    You're encouraged to use the renamed version of this api which doesn't provide the completion block anymore,\n                                                                                    in the new api, mark as read operations will be queued and dispatched more efficiently by the SDK itself so\n                                                                                    that you don't need to worry about when or how it completes, the SDK will handle any error occurred\n                                                                                    ", "markMessagesReadWithInboxMessages:");
 - (void)markMessagesUnReadWithInboxMessages:(NSArray<PNInboxMessage *> * _Nonnull)inboxMessages completion:(void (^ _Nullable)(BOOL))completion;
 - (void)deleteWithInboxMessages:(NSArray<PNInboxMessage *> * _Nonnull)inboxMessages completion:(void (^ _Nullable)(BOOL))completion;
 - (void)didClickedWithMessage:(PNInboxMessage * _Nonnull)message initiateDeepLink:(BOOL)initiateDeepLink;
@@ -741,15 +721,15 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 
 @class UIApplication;
 @class UNUserNotificationCenter;
-@class UNNotificationResponse;
 @class UNNotification;
+@class UNNotificationResponse;
 
 @interface PNNotificationManager (SWIFT_EXTENSION(pai))
 - (void)application:(UIApplication * _Nonnull)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)deviceToken;
 - (void)application:(UIApplication * _Nonnull)application didFailToRegisterForRemoteNotificationsWithError:(NSError * _Nonnull)error;
-- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceive:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
 - (void)application:(UIApplication * _Nullable)application receiveRemoteNotification:(NSDictionary * _Nullable)userInfo handler:(void (^ _Nullable)(UIBackgroundFetchResult))completionHandler;
 - (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresent:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
+- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceive:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
 @end
 
 @class UNNotificationRequest;
@@ -803,9 +783,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PNSignalDisp
 SWIFT_CLASS("_TtC3pai11PNSignalLog")
 @interface PNSignalLog : NSObject <NSCoding>
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 - (void)encodeWithCoder:(NSCoder * _Nonnull)aCoder;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, readonly, copy) NSString * _Nonnull description;
 @end
 
 
