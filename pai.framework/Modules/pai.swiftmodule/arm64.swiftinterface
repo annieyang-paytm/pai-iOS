@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.1.3 effective-4.1.50 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-compiler-version: Apple Swift version 5.2.4 effective-4.1.50 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 4 -enforce-exclusivity=checked -O -module-name pai
 import CommonCrypto
 import CoreData
@@ -8,9 +8,7 @@ import CoreServices
 import DataCompression
 import Dispatch
 import FirebaseCore
-import FirebaseCrashlytics
 import FirebaseMessaging
-import FirebaseRemoteConfig
 import Foundation
 import SQLite
 import Swift
@@ -29,7 +27,7 @@ extension JobInfo : Swift.Decodable {
 extension JobInfo : Swift.Encodable {
   public func encode(to encoder: Swift.Encoder) throws
 }
-@objc open class CornerRoundingView : UIKit.UIView {
+@objc @_inheritsConvenienceInitializers open class CornerRoundingView : UIKit.UIView {
   @objc @IBInspectable open var cornerRadius: CoreGraphics.CGFloat {
     @objc get
     @objc set
@@ -69,20 +67,20 @@ final public class JobBuilder {
   final public func schedule(manager: pai.SwiftQueueManager)
   @objc deinit
 }
-@objc @objcMembers public class PNUser : ObjectiveC.NSObject {
-  @objc public init(userId: Swift.String, ssoToken: Swift.String)
-  @objc override dynamic public init()
+@objc public class PNUser : ObjectiveC.NSObject {
+  public init(userId: Swift.String, ssoToken: Swift.String)
   @objc deinit
+  @objc override dynamic public init()
 }
-@objc open class PNNotificationServiceExtension : UserNotifications.UNNotificationServiceExtension {
+@objc @_inheritsConvenienceInitializers open class PNNotificationServiceExtension : UserNotifications.UNNotificationServiceExtension {
   @objc override dynamic open func didReceive(_ request: UserNotifications.UNNotificationRequest, withContentHandler contentHandler: @escaping (UserNotifications.UNNotificationContent) -> Swift.Void)
   @objc override dynamic open func serviceExtensionTimeWillExpire()
   open func start() -> pai.PNExtesnionConfig?
   open func handleSDKFailure(_ request: UserNotifications.UNNotificationRequest, withContentHandler contentHandler: @escaping (UserNotifications.UNNotificationContent) -> Swift.Void)
   open func handleServiceExtensionTimeWillExpire()
   open func getHmacKey(isStaging: Swift.Bool) -> Swift.String?
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 public struct PNExtesnionConfig {
   public init(appGroupName: Swift.String, clientId: Swift.String, hMacKey: Swift.String)
@@ -99,9 +97,9 @@ public class UserDefaultsPersister : pai.JobPersister {
   public func remove(queueName: Swift.String, taskId: Swift.String)
   @objc deinit
 }
-@objc public class PNSignalBaseSession : ObjectiveC.NSObject {
-  @objc override dynamic public init()
+@objc @_inheritsConvenienceInitializers public class PNSignalBaseSession : ObjectiveC.NSObject {
   @objc deinit
+  @objc override dynamic public init()
 }
 public enum NetworkType : Swift.Int, Swift.Codable {
   case any
@@ -120,64 +118,64 @@ public enum RetryConstraint {
 }
 public struct JobInfo {
 }
-@objc @objcMembers public class PNInboxMessage : ObjectiveC.NSObject {
-  @objc final public let pushId: Swift.String
-  @objc final public let customerId: Swift.String
+@_hasMissingDesignatedInitializers public class PNInboxMessage : Swift.CustomStringConvertible, Swift.Hashable {
+  final public let pushId: Swift.String
+  final public let customerId: Swift.String
   public var readStatus: pai.PNInboxMessageReadStatus? {
     get
-    }
-  @objc public var receivedTime: Foundation.Date? {
+  }
+  public var receivedTime: Foundation.Date? {
     get
-    }
-  @objc public var payload: Swift.Dictionary<Swift.AnyHashable, Any>? {
+  }
+  public var payload: [Swift.AnyHashable : Any]? {
     get
-    }
-  @objc public var title: Swift.String? {
+  }
+  public var title: Swift.String? {
     get
-    }
-  @objc public var body: Swift.String? {
+  }
+  public var body: Swift.String? {
     get
-    }
-  @objc public var expiryDate: Foundation.Date? {
+  }
+  public var expiryDate: Foundation.Date? {
     get
-    }
+  }
   public var deepLink: pai.PNDeeplink? {
     get
-    }
-  @objc public var extra: Swift.Dictionary<Swift.AnyHashable, Any>? {
-    get
-    }
-  @objc public var imageURL: Swift.String? {
-    get
-    }
-  @objc override dynamic public var description: Swift.String {
-    @objc get
   }
-  @objc public func isUnread() -> Swift.Bool
-  @objc public func isDeleted() -> Swift.Bool
-  @objc public func isRead() -> Swift.Bool
-  @objc override dynamic public init()
+  public var extra: [Swift.AnyHashable : Any]? {
+    get
+  }
+  public var imageURL: Swift.String? {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+  public func isUnread() -> Swift.Bool
+  public func isDeleted() -> Swift.Bool
+  public func isRead() -> Swift.Bool
+  public static func == (lhs: pai.PNInboxMessage, rhs: pai.PNInboxMessage) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
   @objc deinit
 }
-public class PNCrashlyticInstance {
-  final public let crashlytics: FirebaseCrashlytics.Crashlytics
+@_hasMissingDesignatedInitializers public class PNPushNotification {
   @objc deinit
 }
-public class PNPushNotification {
-  @objc deinit
-}
-public class PNSilentNotification {
+@_hasMissingDesignatedInitializers public class PNSilentNotification {
   final public let customerId: Swift.String?
   final public let userInfo: [Swift.AnyHashable : Any]
   final public let extraInfo: [Swift.AnyHashable : Any]?
   @objc deinit
 }
-public class V1Serializer : pai.JobInfoSerializer {
+@_hasMissingDesignatedInitializers public class V1Serializer : pai.JobInfoSerializer {
   public func serialize(info: pai.JobInfo) throws -> Swift.String
   public func deserialize(json: Swift.String) throws -> pai.JobInfo
   @objc deinit
 }
-public class PNPushButton {
+@_hasMissingDesignatedInitializers public class PNPushButton {
   final public let groupId: Swift.String
   final public let buttonId: Swift.String
   final public let title: Swift.String
@@ -249,7 +247,7 @@ public enum SwiftQueueError : Swift.Error {
   case duplicate
   case onRetryCancel(Swift.Error)
 }
-final public class SwiftQueueManager {
+@_hasMissingDesignatedInitializers final public class SwiftQueueManager {
   final public var isSuspended: Swift.Bool {
     get
     set
@@ -275,46 +273,45 @@ final public class SwiftQueueManagerBuilder {
   final public func build() -> pai.SwiftQueueManager
   @objc deinit
 }
-@objc @objcMembers public class PNNotificationManager : ObjectiveC.NSObject {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class PNNotificationManager : ObjectiveC.NSObject {
   public var delegate: pai.PNPTMPushNotificationDelegate?
-  public func start(appGroupName: Swift.String, clientId: Swift.String, key: Swift.String, loggedInUserId: Swift.String?, firebaseConfigFile: Swift.String? = nil, isStaging: Swift.Bool = false, sdkMode: pai.PNSDKMode = .serverLogin, configEndPoint: Swift.String? = nil, flashMode: pai.PNFlashMode = .defaultMode, flashPrimaryColorInHex: Swift.String? = nil, flashSecondaryColorInHex: Swift.String? = nil)
-  @objc public func deleteConfig(completion: ((Swift.Bool) -> Swift.Void)?)
-  @objc public func checkBuildStatus(isStaging: Swift.Bool, completion: ((Swift.Bool) -> ())?)
-  @objc public static func sharedInstance() -> pai.PNNotificationManager
+  public func start(appGroupName: Swift.String, clientId: Swift.String, key: Swift.String, loggedInUserId: Swift.String? = nil, firebaseConfigFile: Swift.String? = nil, isStaging: Swift.Bool = false, sdkMode: pai.PNSDKMode = .serverLogin, configEndPoint: Swift.String? = nil, flashMode: pai.PNFlashMode = .defaultMode, flashPrimaryColorInHex: Swift.String? = nil, flashSecondaryColorInHex: Swift.String? = nil)
+  public func deleteConfig(completion: ((Swift.Bool) -> Swift.Void)?)
+  public func checkBuildStatus(isStaging: Swift.Bool, completion: ((Swift.Bool) -> ())?)
+  public static func sharedInstance() -> pai.PNNotificationManager
   @objc deinit
 }
 extension PNNotificationManager {
-  @objc dynamic public func getFCMToken() -> Swift.String?
-  @objc dynamic public func getChannel() -> pai.PNChannel?
+  public func getFCMToken() -> Swift.String?
+  public func getChannel() -> pai.PNChannel?
+  public func getDeviceId() -> Swift.String?
 }
 extension PNNotificationManager {
-  @objc dynamic public func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
-  @objc dynamic public func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
-  @objc dynamic public func application(_ application: UIKit.UIApplication?, receiveRemoteNotification userInfo: [Swift.AnyHashable : Any]?, handler completionHandler: ((UIKit.UIBackgroundFetchResult) -> Swift.Void)?)
-  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
-  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
+  public func application(_ application: UIKit.UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Foundation.Data)
+  public func application(_ application: UIKit.UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Swift.Error)
+  public func application(_ application: UIKit.UIApplication?, receiveRemoteNotification userInfo: [Swift.AnyHashable : Any]?, handler completionHandler: ((UIKit.UIBackgroundFetchResult) -> Swift.Void)?)
+  public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
 }
 extension PNNotificationManager {
-  @objc dynamic public func login(user: Swift.String)
-  @objc dynamic public func logout()
-  @objc dynamic public func isUserIdAvailable() -> Swift.Bool
-  @objc dynamic public func requiresUpdate(user: pai.PNUser)
+  public func login(user: Swift.String)
+  public func logout()
+  public func isUserIdAvailable() -> Swift.Bool
 }
 extension PNNotificationManager {
-  @objc dynamic public func fetchInboxMessages() -> [pai.PNInboxMessage]
-  @objc dynamic public func syncInboxMessages()
-  @objc dynamic public func markMessagesRead(inboxMessages: [pai.PNInboxMessage])
+  public func fetchInboxMessages() -> [pai.PNInboxMessage]
+  public func syncInboxMessages()
+  public func markMessagesRead(inboxMessages: [pai.PNInboxMessage])
   @available(*, deprecated, renamed: "markMessagesRead(inboxMessages:)", message: "You're encouraged to use the renamed version of this api which doesn't provide the completion block anymore,\nin the new api, mark as read operations will be queued and dispatched more efficiently by the SDK itself so\nthat you don't need to worry about when or how it completes, the SDK will handle any error occurred")
-  @objc dynamic public func markMessagesRead(inboxMessages: [pai.PNInboxMessage], completion: ((Swift.Bool) -> ())?)
-  @objc dynamic public func markMessagesUnRead(inboxMessages: [pai.PNInboxMessage], completion: ((Swift.Bool) -> ())?)
-  @objc dynamic public func delete(inboxMessages: [pai.PNInboxMessage], completion: ((Swift.Bool) -> ())?)
-  @objc dynamic public func didClicked(message: pai.PNInboxMessage, initiateDeepLink: Swift.Bool)
-  @objc dynamic public func messageDisplayed(message: pai.PNInboxMessage)
+  public func markMessagesRead(inboxMessages: [pai.PNInboxMessage], completion: ((Swift.Bool) -> ())?)
+  public func markMessagesUnRead(inboxMessages: [pai.PNInboxMessage], completion: ((Swift.Bool) -> ())?)
+  public func delete(inboxMessages: [pai.PNInboxMessage], completion: ((Swift.Bool) -> ())?)
+  public func didClicked(message: pai.PNInboxMessage, initiateDeepLink: Swift.Bool)
+  public func messageDisplayed(message: pai.PNInboxMessage)
 }
 extension PNNotificationManager {
-  @objc dynamic public func flashViewRemoved()
+  public func flashViewRemoved()
 }
-public typealias PNInboxCompletion = (Swift.Array<pai.PNInboxMessage>) -> ()
 public enum PNFlashMode : Swift.Int {
   case defaultMode
   case instantDisplayMode
@@ -341,10 +338,10 @@ public enum PNInboxMessageReadStatus : Swift.String {
   }
   public init?(rawValue: Swift.String)
 }
-@objc public class PNSignalSession : pai.PNSignalBaseSession {
+@objc @_inheritsConvenienceInitializers public class PNSignalSession : pai.PNSignalBaseSession {
   public static func push(signalLog: pai.PNSignalLog)
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 public enum LogLevel : Swift.Int {
   case verbose
@@ -370,17 +367,14 @@ open class ConsoleLogger : pai.SwiftQueueLogger {
   open func printComputed(output: Swift.String)
   @objc deinit
 }
-public class NoLogger : pai.SwiftQueueLogger {
+@_hasMissingDesignatedInitializers public class NoLogger : pai.SwiftQueueLogger {
   public static let shared: pai.NoLogger
   public func log(_ level: pai.LogLevel, jobId: @autoclosure () -> Swift.String, message: @autoclosure () -> Swift.String)
   @objc deinit
 }
-public typealias NotificationDataCompletion = ([pai.PNPTMPushNotificationDelegate]?) -> ()
 public protocol PNPTMPushNotificationDelegate {
   func deviceLanguage() -> Swift.String?
   func received(deepLink: pai.PNDeeplink?)
-  func didReceive(remoteConfig: pai.PNFirebaseRemoteConfig)
-  func didReceive(crashlyticInstance: pai.PNCrashlyticInstance)
   func topViewController() -> UIKit.UIViewController?
   func sharedApplication() -> UIKit.UIApplication?
   func didRecieve(channel: pai.PNChannel)
@@ -391,13 +385,11 @@ public protocol PNPTMPushNotificationDelegate {
 }
 extension PNPTMPushNotificationDelegate {
   public func inboxListUpdated()
-  public func didReceive(remoteConfig: pai.PNFirebaseRemoteConfig)
-  public func didReceive(crashlyticInstance: pai.PNCrashlyticInstance)
   public func willDisplayFlashMessage(with payload: [Swift.AnyHashable : Any]?, appearanceConfigurator: pai.PNFlashAppearanceConfigurator)
   public func didDisplayFlashMessage(with payload: [Swift.AnyHashable : Any]?)
 }
 public struct PNConstantsStore {
-  public struct NotificationCenterKeys {
+  public struct PushNotificationKeys {
     public static let inboxListUpdatedNotification: Swift.String
   }
   public struct Misc {
@@ -406,26 +398,22 @@ public struct PNConstantsStore {
 extension UIColor {
   convenience public init?(hex: Swift.String)
 }
-@objc public class PNSignalConfiguration : ObjectiveC.NSObject {
+@objc @_inheritsConvenienceInitializers public class PNSignalConfiguration : ObjectiveC.NSObject {
   public static func initializePASignalSession(signalType: pai.PNType, withUniqueIdentifier uniqueIdentifier: Swift.String = PNSignalConstant.PA_EVENT_DEFAULT_UNIQUE_ID, isLogginEnabled loggingEnabled: Swift.Bool = PNSignalConstant.PA_EVENT_DEFAULT_LOGGING_ENABLED, withDispatchStrategy dispatchStrategy: pai.PNDispatchStrategy = PNSignalConstant.PA_EVENT_DEFAULT_DISPATCH_STRATEGY, withDispatchInterval dispatchInterval: Foundation.TimeInterval = PNSignalConstant.PA_NC_DEFAULT_DISPATCH_INTERVAL, andMaxBatchSizeToUpload maxBatchSizeToUpload: Swift.Int = PNSignalConstant.PA_EVENT_DEFAULT_MAX_BATCH_UPLOAD, andMaxBatchSizeToCapture maxBatchSizeToCapture: Swift.Int = PNSignalConstant.PA_EVENT_DEFAULT_MAX_BATCH_CAPTURE, andRequestUrl urlString: Swift.String = "", clientId: Swift.String)
   public static func initializeDatastore(signalType: pai.PNType)
+  @objc deinit
   @objc override dynamic public init()
-  @objc deinit
 }
-public class PNFirebaseRemoteConfig {
-  final public let firebaseRemoteConfig: FirebaseRemoteConfig.RemoteConfig
+@objc @_inheritsConvenienceInitializers public class PNSignalDispatcher : ObjectiveC.NSObject {
+  public static let eventSharedDispatcher: pai.PNSignalDispatcher
+  public static let pushSharedDispatcher: pai.PNSignalDispatcher
   @objc deinit
-}
-@objc public class PNSignalDispatcher : ObjectiveC.NSObject {
-  @objc public static let eventSharedDispatcher: pai.PNSignalDispatcher
-  @objc public static let pushSharedDispatcher: pai.PNSignalDispatcher
   @objc override dynamic public init()
-  @objc deinit
 }
 extension PNSignalDispatcher {
-  @objc dynamic public func dispatch()
+  public func dispatch()
 }
-@objc final public class PNSignalLog : ObjectiveC.NSObject, Foundation.NSCoding {
+@objc @_inheritsConvenienceInitializers final public class PNSignalLog : ObjectiveC.NSObject, Foundation.NSCoding {
   final public var deviceId: Swift.String?
   final public var payload: [Swift.String : Any]?
   final public var eventType: Swift.String?
@@ -442,10 +430,10 @@ extension PNSignalDispatcher {
   }
   @objc deinit
 }
-public class PNFlashAppearanceConfigurator {
+@_hasMissingDesignatedInitializers public class PNFlashAppearanceConfigurator {
   @objc deinit
 }
-public class PNDeeplink {
+@_hasMissingDesignatedInitializers public class PNDeeplink {
   public var deepLinkString: Swift.String?
   public var deepLinkDict: Swift.Dictionary<Swift.AnyHashable, Any>?
   @objc deinit
@@ -469,7 +457,7 @@ public enum PNType {
   }
   public func hash(into hasher: inout Swift.Hasher)
 }
-@objc public class PNSignalConstant : ObjectiveC.NSObject {
+@objc @_inheritsConvenienceInitializers public class PNSignalConstant : ObjectiveC.NSObject {
   public static var PA_NC_DEFAULT_DISPATCH_INTERVAL: Foundation.TimeInterval {
     get
   }
@@ -527,21 +515,23 @@ public enum PNType {
   public static var PA_COL_EVENT_IS_STAGED: Swift.String {
     get
   }
-  @objc override dynamic public init()
   @objc deinit
-}
-@objc public class PNChannel : ObjectiveC.NSObject {
-  final public let channelId: Swift.String
   @objc override dynamic public init()
+}
+@_hasMissingDesignatedInitializers public class PNChannel {
+  final public let channelId: Swift.String
   @objc deinit
 }
 extension pai.NetworkType : Swift.Equatable {}
 extension pai.NetworkType : Swift.Hashable {}
 extension pai.NetworkType : Swift.RawRepresentable {}
+extension pai.PNFlashMode : Swift.Equatable {}
 extension pai.PNFlashMode : Swift.Hashable {}
 extension pai.PNFlashMode : Swift.RawRepresentable {}
+extension pai.PNSDKMode : Swift.Equatable {}
 extension pai.PNSDKMode : Swift.Hashable {}
 extension pai.PNSDKMode : Swift.RawRepresentable {}
+extension pai.PNInboxMessageReadStatus : Swift.Equatable {}
 extension pai.PNInboxMessageReadStatus : Swift.Hashable {}
 extension pai.PNInboxMessageReadStatus : Swift.RawRepresentable {}
 extension pai.LogLevel : Swift.Equatable {}

@@ -1,10 +1,11 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.5"
+    s.version      = "5.3.6"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	1) Expose FirebaseCrashlytics to the app-side
-    2) Minor bugs fix
+	1. Migrate framework from dynamic to static to address some Firebase undefined behaviors
+    2. Improve project structure and code quality
+    3. Add more debug information to ease client-side development process
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
@@ -16,13 +17,11 @@ Pod::Spec.new do |s|
     s.platform = :ios
     s.swift_version = "4.0"
     s.ios.deployment_target  = '11.0'
+    s.static_framework = true
+    s.resource = "Resources.bundle"
     s.frameworks = 'CoreServices'
-    s.dependency 'FirebaseRemoteConfig'
-    s.dependency 'FirebasePerformance'
-    s.dependency 'FirebaseCrashlytics'
     s.dependency 'FirebaseCore', '6.6.0'
     s.dependency 'FirebaseMessaging', '4.2.0'
-    s.dependency 'Firebase/Analytics'
     s.dependency 'SQLite.swift', '0.12.0'
     s.dependency 'DataCompression', '3.1.0'
 
