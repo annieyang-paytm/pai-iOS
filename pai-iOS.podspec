@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.6.3"
+    s.version      = "5.3.6.4"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
 	Add missing Push Notification Received signal event
