@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.6.2"
+    s.version      = "5.3.6.3"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	Fix application unable to archive
+	Add missing Push Notification Received signal event
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
