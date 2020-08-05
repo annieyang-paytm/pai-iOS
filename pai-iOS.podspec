@@ -1,9 +1,14 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.6.4"
+    s.version      = "5.3.7"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	Add missing Push Notification Received signal event
+	- Fix two Firebase registration tokens issue occurred  in some devices when users launch the app the first time
+    - Send push signal events to backend at the time when push received and resend if fails when app is background
+    - Add Crashlytics logging to track SDK errors and exceptions
+    - Remove dependancy on SQLite.swift
+    - Enable to turn on/off debug logging message
+    - Improve SDK startup performance
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
@@ -20,8 +25,8 @@ Pod::Spec.new do |s|
     s.frameworks = 'CoreServices'
     s.dependency 'FirebaseCore', '6.6.0'
     s.dependency 'FirebaseMessaging', '4.2.0'
-    s.dependency 'SQLite.swift', '0.12.0'
     s.dependency 'DataCompression', '3.1.0'
+    s.dependency 'FirebaseCrashlytics'
 
     # Lock Protobuf to 3.11.4 as 3.12.0 has problem being loaded dynamically
     s.dependency 'Protobuf', '3.11.4'

@@ -302,7 +302,8 @@ SWIFT_CLASS("_TtC3pai18PNSignalDispatcher")
 
 SWIFT_CLASS("_TtC3pai11PNSignalLog")
 @interface PNSignalLog : NSObject <NSCoding>
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 - (void)encodeWithCoder:(NSCoder * _Nonnull)aCoder;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
@@ -635,7 +636,8 @@ SWIFT_CLASS("_TtC3pai18PNSignalDispatcher")
 
 SWIFT_CLASS("_TtC3pai11PNSignalLog")
 @interface PNSignalLog : NSObject <NSCoding>
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 - (void)encodeWithCoder:(NSCoder * _Nonnull)aCoder;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;
