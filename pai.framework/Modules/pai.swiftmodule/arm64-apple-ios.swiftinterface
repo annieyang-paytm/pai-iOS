@@ -105,6 +105,8 @@ public enum PNInboxMessageReadStatus : Swift.String {
   @objc override dynamic open func didReceive(_ request: UserNotifications.UNNotificationRequest, withContentHandler contentHandler: @escaping (UserNotifications.UNNotificationContent) -> Swift.Void)
   @objc override dynamic open func serviceExtensionTimeWillExpire()
   open func start() -> pai.PNExtesnionConfig?
+  open func handleSDKFailure(_ request: UserNotifications.UNNotificationRequest, failureReason: Swift.String? = nil, withContentHandler contentHandler: @escaping (UserNotifications.UNNotificationContent) -> Swift.Void)
+  @available(*, deprecated, renamed: "handleSDKFailure(_:failureReason:withContentHandler:)")
   open func handleSDKFailure(_ request: UserNotifications.UNNotificationRequest, withContentHandler contentHandler: @escaping (UserNotifications.UNNotificationContent) -> Swift.Void)
   open func handleServiceExtensionTimeWillExpire()
   @objc override dynamic public init()
@@ -128,6 +130,21 @@ public class UserDefaultsPersister : pai.JobPersister {
 @objc public class PNSignalBaseSession : ObjectiveC.NSObject {
   @objc override dynamic public init()
   @objc deinit
+}
+public struct PNConstantsStore {
+  public struct PushNotificationKeys {
+    public static let inboxListUpdatedNotification: Swift.String
+  }
+  public struct Misc {
+  }
+}
+public struct PNSignalConstant {
+  public static let PA_EVENT_DEFAULT_UNIQUE_ID: Swift.String
+  public static let PA_EVENT_DEFAULT_LOGGING_ENABLED: Swift.Bool
+  public static let PA_EVENT_DEFAULT_DISPATCH_STRATEGY: pai.PNDispatchStrategy
+  public static let PA_EVENT_DEFAULT_DISPATCH_INTERVAL: Foundation.TimeInterval
+  public static let PA_EVENT_DEFAULT_MAX_BATCH_UPLOAD: Swift.Int
+  public static let PA_EVENT_DEFAULT_MAX_BATCH_CAPTURE: Swift.Int
 }
 public enum NetworkType : Swift.Int, Swift.Codable {
   case any
@@ -309,14 +326,16 @@ final public class SwiftQueueManagerBuilder {
   @objc deinit
 }
 @objc public class PNNotificationManager : ObjectiveC.NSObject {
+  public static let shared: pai.PNNotificationManager
   public var delegate: pai.PNPTMPushNotificationDelegate?
   public var debugEnabled: Swift.Bool {
     get
     set
   }
   public func start(appGroupName: Swift.String, clientId: Swift.String, key: Swift.String, loggedInUserId: Swift.String? = nil, firebaseConfigFile: Swift.String? = nil, isStaging: Swift.Bool = false, sdkMode: pai.PNSDKMode = .serverLogin, configEndPoint: Swift.String, flashMode: pai.PNFlashMode = .defaultMode, flashPrimaryColorInHex: Swift.String? = nil, flashSecondaryColorInHex: Swift.String? = nil)
-  public func deleteConfig(completion: ((Swift.Bool) -> Swift.Void)?)
+  public func deleteSavedData(completion: ((Swift.Bool) -> Swift.Void)?)
   public func checkBuildStatus(isStaging: Swift.Bool, completion: ((Swift.Bool) -> ())?)
+  @available(*, deprecated, renamed: "shared")
   public static func sharedInstance() -> pai.PNNotificationManager
   @objc deinit
 }
@@ -399,19 +418,14 @@ public protocol PNPTMPushNotificationDelegate {
   func didDisplayFlashMessage(with payload: [Swift.AnyHashable : Any]?)
   func inboxListUpdated()
   func logSDKGeneric(error: pai.PNCrashlyticsTrackingError)
+  func firebaseConfigrationDone()
 }
 extension PNPTMPushNotificationDelegate {
   public func logSDKGeneric(error: pai.PNCrashlyticsTrackingError)
   public func inboxListUpdated()
   public func willDisplayFlashMessage(with payload: [Swift.AnyHashable : Any]?, appearanceConfigurator: pai.PNFlashAppearanceConfigurator)
   public func didDisplayFlashMessage(with payload: [Swift.AnyHashable : Any]?)
-}
-public struct PNConstantsStore {
-  public struct PushNotificationKeys {
-    public static let inboxListUpdatedNotification: Swift.String
-  }
-  public struct Misc {
-  }
+  public func firebaseConfigrationDone()
 }
 extension UIColor {
   convenience public init?(hex: Swift.String)
@@ -420,6 +434,16 @@ extension UIColor {
   public static func initializePASignalSession(withUniqueIdentifier uniqueIdentifier: Swift.String = PNSignalConstant.PA_EVENT_DEFAULT_UNIQUE_ID, isLogginEnabled loggingEnabled: Swift.Bool = PNSignalConstant.PA_EVENT_DEFAULT_LOGGING_ENABLED, withDispatchStrategy dispatchStrategy: pai.PNDispatchStrategy = PNSignalConstant.PA_EVENT_DEFAULT_DISPATCH_STRATEGY, withDispatchInterval dispatchInterval: Foundation.TimeInterval = PNSignalConstant.PA_EVENT_DEFAULT_DISPATCH_INTERVAL, andMaxBatchSizeToUpload maxBatchSizeToUpload: Swift.Int = PNSignalConstant.PA_EVENT_DEFAULT_MAX_BATCH_UPLOAD, andMaxBatchSizeToCapture maxBatchSizeToCapture: Swift.Int = PNSignalConstant.PA_EVENT_DEFAULT_MAX_BATCH_CAPTURE, andRequestUrl urlString: Swift.String = "", clientId: Swift.String)
   @objc override dynamic public init()
   @objc deinit
+}
+public enum PNDispatchStrategy {
+  case manual
+  case intervalBased
+  case background
+  public static func == (a: pai.PNDispatchStrategy, b: pai.PNDispatchStrategy) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
 }
 @objc public class PNSignalDispatcher : ObjectiveC.NSObject {
   public static let shared: pai.PNSignalDispatcher
@@ -445,26 +469,6 @@ public class PNFlashAppearanceConfigurator {
 public class PNDeeplink {
   public var deepLinkString: Swift.String?
   public var deepLinkDict: Swift.Dictionary<Swift.AnyHashable, Any>?
-  @objc deinit
-}
-public enum PNDispatchStrategy {
-  case manual
-  case intervalBased
-  case background
-  public static func == (a: pai.PNDispatchStrategy, b: pai.PNDispatchStrategy) -> Swift.Bool
-  public var hashValue: Swift.Int {
-    get
-  }
-  public func hash(into hasher: inout Swift.Hasher)
-}
-@objc public class PNSignalConstant : ObjectiveC.NSObject {
-  public static let PA_EVENT_DEFAULT_UNIQUE_ID: Swift.String
-  public static let PA_EVENT_DEFAULT_LOGGING_ENABLED: Swift.Bool
-  public static let PA_EVENT_DEFAULT_DISPATCH_STRATEGY: pai.PNDispatchStrategy
-  public static let PA_EVENT_DEFAULT_DISPATCH_INTERVAL: Foundation.TimeInterval
-  public static let PA_EVENT_DEFAULT_MAX_BATCH_UPLOAD: Swift.Int
-  public static let PA_EVENT_DEFAULT_MAX_BATCH_CAPTURE: Swift.Int
-  @objc override dynamic public init()
   @objc deinit
 }
 public class PNChannel {

@@ -1,9 +1,13 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.7.1"
+    s.version      = "5.3.8"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	- Remove expired flash messages in local right after a flash sync call with backend, rather than within SDK setup, to prevent possible crash.
+	- A new delegate is added to notify app when Firebase finishes configuration
+    - Allow the containing app and its notification extension to share the same CoreData storage
+    - Deprecate some methods
+    - Remove version restriction on Firebase APIs dependency
+    - Improve SDK startup process performance
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/pai-iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
@@ -18,13 +22,9 @@ Pod::Spec.new do |s|
     s.static_framework = true
     s.resource = "Resources.bundle"
     s.frameworks = 'CoreServices'
-    s.dependency 'FirebaseCore', '6.6.0'
-    s.dependency 'FirebaseMessaging', '4.2.0'
-    s.dependency 'DataCompression', '3.1.0'
+    s.dependency 'FirebaseCore'
+    s.dependency 'FirebaseMessaging'
     s.dependency 'FirebaseCrashlytics'
+    s.dependency 'DataCompression', '3.1.0'
 
-    # Lock Protobuf to 3.11.4 as 3.12.0 has problem being loaded dynamically
-    s.dependency 'Protobuf', '3.11.4'
-    # Lock nanopb to 0.3.x
-    s.dependency 'nanopb', '~> 0.3.901'
 end

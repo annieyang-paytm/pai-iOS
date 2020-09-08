@@ -282,12 +282,6 @@ SWIFT_CLASS("_TtC3pai21PNSignalConfiguration")
 @end
 
 
-SWIFT_CLASS("_TtC3pai16PNSignalConstant")
-@interface PNSignalConstant : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
 SWIFT_CLASS("_TtC3pai18PNSignalDispatcher")
 @interface PNSignalDispatcher : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -612,12 +606,6 @@ SWIFT_CLASS("_TtC3pai19PNSignalBaseSession")
 
 SWIFT_CLASS("_TtC3pai21PNSignalConfiguration")
 @interface PNSignalConfiguration : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC3pai16PNSignalConstant")
-@interface PNSignalConstant : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
