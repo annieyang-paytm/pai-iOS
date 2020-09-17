@@ -3,11 +3,8 @@ Pod::Spec.new do |s|
     s.version      = "5.3.8.1"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	- A new delegate is added to notify app when Firebase finishes configuration
-    - Allow the containing app and its notification extension to share the same CoreData storage
-    - Deprecate some methods
-    - Remove version restriction on Firebase APIs dependency
-    - Improve SDK startup process performance
+	- Get rid of local file path archived in SDK
+    - Potential fix for crash in Coredata
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/pai-iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
