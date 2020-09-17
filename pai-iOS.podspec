@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.8"
+    s.version      = "5.3.8.1"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
 	- A new delegate is added to notify app when Firebase finishes configuration
