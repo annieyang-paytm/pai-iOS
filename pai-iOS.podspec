@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.8.2.1"
+    s.version      = "5.3.8.3"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	- Solidate core data shared folder creation
+	- Allow the app to call firebase configuration outside SDK
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/pai-iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
