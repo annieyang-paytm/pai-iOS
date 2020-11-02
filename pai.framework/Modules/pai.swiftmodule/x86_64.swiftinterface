@@ -206,7 +206,6 @@ public class PNPushNotification {
   @objc deinit
 }
 public class PNSilentNotification {
-  final public let customerId: Swift.String?
   final public let userInfo: [Swift.AnyHashable : Any]
   final public let extraInfo: [Swift.AnyHashable : Any]?
   @objc deinit
