@@ -1,9 +1,11 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.8.4.1"
+    s.version      = "5.3.8.5"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	- Fix missing customerId in push analytics in a special case
+	Try to increase remote notification delivery rate;
+    Further reduce SDK launch time; 
+    Bug fixes;
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/pai-iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }

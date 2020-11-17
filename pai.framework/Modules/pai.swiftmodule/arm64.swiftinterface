@@ -104,13 +104,15 @@ public enum PNInboxMessageReadStatus : Swift.String {
   @objc override dynamic open func didReceive(_ request: UserNotifications.UNNotificationRequest, withContentHandler contentHandler: @escaping (UserNotifications.UNNotificationContent) -> Swift.Void)
   @objc override dynamic open func serviceExtensionTimeWillExpire()
   open func start() -> pai.PNExtesnionConfig?
-  @available(*, deprecated, message: "No longer needed, going to delete it soon")
-  open func handleSDKFailure(_ request: UserNotifications.UNNotificationRequest, withContentHandler contentHandler: @escaping (UserNotifications.UNNotificationContent) -> Swift.Void)
   @objc override dynamic public init()
   @objc deinit
 }
-public struct PNExtesnionConfig {
+public struct PNExtesnionConfig : Swift.Codable {
+  @available(*, deprecated, renamed: "init(appGroupName:clientId:hMacKey:configEndPoint:)")
   public init(appGroupName: Swift.String, clientId: Swift.String, hMacKey: Swift.String)
+  public init(appGroupName: Swift.String, clientId: Swift.String, hMacKey: Swift.String, configEndPoint: Swift.String)
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
 }
 precedencegroup OptionalAssignment {
   associativity: right
@@ -320,7 +322,9 @@ final public class SwiftQueueManagerBuilder {
     get
     set
   }
+  @available(*, deprecated, message: "This method will be deprecated soon, please call start(appGroupName:clientId:key:delegate:loggedInUserId:firebaseConfigFile:isStaging:sdkMode:configEndPoint:flashMode:flashPrimaryColorInHex:flashSecondaryColorInHex) instead. Please be careful that if app side keeps using this method, `PNNotificationManager.shared.delegate` must be assigned before calling this method")
   public func start(appGroupName: Swift.String, clientId: Swift.String, key: Swift.String, loggedInUserId: Swift.String? = nil, firebaseConfigFile: Swift.String? = nil, isStaging: Swift.Bool = false, sdkMode: pai.PNSDKMode = .serverLogin, configEndPoint: Swift.String, flashMode: pai.PNFlashMode = .defaultMode, flashPrimaryColorInHex: Swift.String? = nil, flashSecondaryColorInHex: Swift.String? = nil)
+  public func start(appGroupName: Swift.String, clientId: Swift.String, key: Swift.String, delegate: pai.PNPTMPushNotificationDelegate, loggedInUserId: Swift.String? = nil, firebaseConfigFile: Swift.String? = nil, isStaging: Swift.Bool = false, sdkMode: pai.PNSDKMode = .serverLogin, configEndPoint: Swift.String, flashMode: pai.PNFlashMode = .defaultMode, flashPrimaryColorInHex: Swift.String? = nil, flashSecondaryColorInHex: Swift.String? = nil)
   public func deleteSavedData(completion: ((Swift.Bool) -> Swift.Void)?)
   public func checkBuildStatus(isStaging: Swift.Bool, completion: ((Swift.Bool) -> ())?)
   @available(*, deprecated, renamed: "shared")
@@ -351,8 +355,6 @@ extension PNNotificationManager {
   public func syncInboxMessages()
   public func markInboxAllMessagesRead()
   public func markMessagesRead(inboxMessages: [pai.PNInboxMessage])
-  @available(*, deprecated, renamed: "markMessagesRead(inboxMessages:)", message: "You're encouraged to use the renamed version of this api which doesn't provide the completion block anymore,\nin the new api, mark as read operations will be queued and dispatched more efficiently by the SDK itself so\nthat you don't need to worry about when or how it completes, the SDK will handle any error occurred")
-  public func markMessagesRead(inboxMessages: [pai.PNInboxMessage], completion: ((Swift.Bool) -> ())?)
   public func markMessagesUnRead(inboxMessages: [pai.PNInboxMessage], completion: ((Swift.Bool) -> ())?)
   public func delete(inboxMessages: [pai.PNInboxMessage], completion: ((Swift.Bool) -> ())?)
   public func didClicked(message: pai.PNInboxMessage, initiateDeepLink: Swift.Bool)
@@ -362,7 +364,6 @@ extension PNNotificationManager {
   public func flashViewRemoved()
 }
 @objc public class PNSignalSession : pai.PNSignalBaseSession {
-  @objc override dynamic public init()
   @objc deinit
 }
 public enum LogLevel : Swift.Int {
