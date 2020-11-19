@@ -361,6 +361,7 @@ extension PNNotificationManager {
   public func messageDisplayed(message: pai.PNInboxMessage)
 }
 extension PNNotificationManager {
+  public func displayFlashMessage()
   public func flashViewRemoved()
 }
 @objc public class PNSignalSession : pai.PNSignalBaseSession {

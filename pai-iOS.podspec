@@ -1,11 +1,9 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.8.5"
+    s.version      = "5.3.8.5.1"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	Try to increase remote notification delivery rate;
-    Further reduce SDK launch time; 
-    Bug fixes;
+	Expose a new method displayFlashMessage() to the app-side
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/pai-iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
