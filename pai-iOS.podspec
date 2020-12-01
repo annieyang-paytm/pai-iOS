@@ -1,9 +1,11 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.8.5.1"
+    s.version      = "5.3.8.6"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	Expose a new method displayFlashMessage() to the app-side
+	- Display flash view only when the message body is not empty
+    - Replace fatal error in production environment with a console printout
+    - Fix a bug in push signal where dismiss event sent three time when user dismiss the view
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/pai-iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
