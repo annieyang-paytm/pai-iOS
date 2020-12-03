@@ -3,9 +3,7 @@ Pod::Spec.new do |s|
     s.version      = "5.3.8.6.1"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	- Display flash view only when the message body is not empty
-    - Replace fatal error in production environment with a console printout
-    - Fix a bug in push signal where dismiss event sent three time when user dismiss the view
+	- Make UIColor extension existing initialization method as private
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/pai-iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
