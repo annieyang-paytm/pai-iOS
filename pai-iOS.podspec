@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.8.6"
+    s.version      = "5.3.8.6.1"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
 	- Display flash view only when the message body is not empty

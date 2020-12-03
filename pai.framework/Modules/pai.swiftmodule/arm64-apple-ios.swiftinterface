@@ -416,9 +416,6 @@ extension PNPTMPushNotificationDelegate {
   public func didDisplayFlashMessage(with payload: [Swift.AnyHashable : Any]?)
   public func firebaseConfigrationDone()
 }
-extension UIColor {
-  convenience public init?(hex: Swift.String)
-}
 @objc public class PNSignalConfiguration : ObjectiveC.NSObject {
   @objc override dynamic public init()
   @objc deinit
