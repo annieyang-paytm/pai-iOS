@@ -1,9 +1,11 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.8.6.1"
+    s.version      = "5.3.8.7"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	- Make UIColor extension existing initialization method as private
+	- Add signal event to flash view with empty body message
+    - Make UIColor extension existing initialization method as private
+    - Minor bug fixes
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/pai-iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
