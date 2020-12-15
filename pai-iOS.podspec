@@ -1,11 +1,10 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "5.3.8.7"
+    s.version      = "6.0.0"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-	- Add signal event to flash view with empty body message
-    - Make UIColor extension existing initialization method as private
-    - Minor bug fixes
+    - New public struct PNExtensionConfig to replace the old typo PNExtesnionConfig; add a brand new initializer while removing the previous one.
+    - Bug fixes
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/pai-iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
