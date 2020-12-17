@@ -1,10 +1,9 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "6.0.0"
+    s.version      = "6.0.1"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-    - New public struct PNExtensionConfig to replace the old typo PNExtesnionConfig; add a brand new initializer while removing the previous one.
-    - Bug fixes
+    - Fix the crash caused by CoreData persistent store not being ready when performing save operations
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/pai-iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
