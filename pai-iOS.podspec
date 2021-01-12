@@ -12,6 +12,7 @@ Pod::Spec.new do |s|
 
     s.public_header_files = "pai.framework/Headers/*.h"
     s.source_files = "pai.framework/Headers/*.h"
+    s.vendored_frameworks = "pai.framework"
     # s.vendored_frameworks = "pai.xcframework"
     
     s.platform = :ios
