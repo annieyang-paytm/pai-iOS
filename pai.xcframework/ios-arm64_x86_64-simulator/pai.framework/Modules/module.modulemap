@@ -1,4 +1,0 @@
-framework module pai {
-  header "pai-Swift.h"
-  requires objc
-}
