@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "6.0.2"
+    s.version      = "6.0.3"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
      - Bug fixes
@@ -13,7 +13,6 @@ Pod::Spec.new do |s|
     s.public_header_files = "pai.framework/Headers/*.h"
     s.source_files = "pai.framework/Headers/*.h"
     s.vendored_frameworks = "pai.framework"
-    # s.vendored_frameworks = "pai.xcframework"
     
     s.platform = :ios
     s.swift_version = "5.0"
