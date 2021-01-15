@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "7.0.0"
+    s.version      = "7.0.1"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
      - Distribute the pai-iOS framework via XCFramework
