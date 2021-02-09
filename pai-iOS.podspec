@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "7.1.0"
+    s.version      = "7.1.1"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
         1. Extensive project-wise code/structure cleanup/reorganize
