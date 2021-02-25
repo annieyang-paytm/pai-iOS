@@ -15,58 +15,6 @@ import SystemConfiguration
 import UIKit
 import UserNotifications
 import os
-public class DecodableSerializer : pai.JobInfoSerializer {
-  public init(encoder: Foundation.JSONEncoder = JSONEncoder(), decoder: Foundation.JSONDecoder = JSONDecoder())
-  public func serialize(info: pai.JobInfo) throws -> Swift.String
-  public func deserialize(json: Swift.String) throws -> pai.JobInfo
-  @objc deinit
-}
-extension JobInfo : Swift.Decodable {
-  public init(from decoder: Swift.Decoder) throws
-}
-extension JobInfo : Swift.Encodable {
-  public func encode(to encoder: Swift.Encoder) throws
-}
-@objc @_inheritsConvenienceInitializers open class CornerRoundingView : UIKit.UIView {
-  @objc @IBInspectable open var cornerRadius: CoreGraphics.CGFloat {
-    @objc get
-    @objc set
-  }
-  @objc @IBInspectable open var roundsLeadingCorners: Swift.Bool
-  open var roundedCorners: UIKit.UIRectCorner {
-    get
-    set
-  }
-  @objc override dynamic public init(frame: CoreGraphics.CGRect)
-  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
-  @objc override dynamic open func layoutSubviews()
-  @objc deinit
-}
-extension Limit : Swift.Codable {
-  public init(from decoder: Swift.Decoder) throws
-  public func encode(to encoder: Swift.Encoder) throws
-}
-extension Limit : Swift.Equatable {
-  public static func == (lhs: pai.Limit, rhs: pai.Limit) -> Swift.Bool
-}
-final public class JobBuilder {
-  public init(type: Swift.String)
-  final public func singleInstance(forId: Swift.String, override: Swift.Bool = false, includeExecutingJob: Swift.Bool = true) -> Self
-  @available(*, deprecated, renamed: "parallel")
-  final public func group(name: Swift.String) -> Self
-  final public func parallel(queueName: Swift.String) -> Self
-  final public func delay(time: Foundation.TimeInterval) -> Self
-  final public func deadline(date: Foundation.Date) -> Self
-  final public func periodic(limit: pai.Limit = .unlimited, interval: Foundation.TimeInterval = 0) -> Self
-  final public func internet(atLeast: pai.NetworkType) -> Self
-  final public func persist(required: Swift.Bool) -> Self
-  final public func retry(limit: pai.Limit) -> Self
-  final public func addTag(tag: Swift.String) -> Self
-  final public func with(params: [Swift.String : Any]) -> Self
-  final public func requireCharging(value: Swift.Bool) -> Self
-  final public func schedule(manager: pai.SwiftQueueManager)
-  @objc deinit
-}
 public enum PNFlashMode : Swift.Int {
   case defaultMode
   case instantDisplayMode
@@ -95,10 +43,17 @@ public enum PNInboxMessageReadStatus : Swift.String {
   }
   public init?(rawValue: Swift.String)
 }
-@objc final public class PNUser : ObjectiveC.NSObject {
-  public init(userId: Swift.String, ssoToken: Swift.String)
-  @objc deinit
-  @objc override dynamic public init()
+public enum PNDeeplinkType : Swift.String {
+  case deepLink
+  case dismiss
+  case share
+  case webview
+  case noOperation
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
 }
 @objc @_inheritsConvenienceInitializers open class PNNotificationServiceExtension : UserNotifications.UNNotificationServiceExtension {
   @objc override dynamic open func didReceive(_ request: UserNotifications.UNNotificationRequest, withContentHandler contentHandler: @escaping (UserNotifications.UNNotificationContent) -> Swift.Void)
@@ -116,41 +71,10 @@ precedencegroup OptionalAssignment {
   associativity: right
 }
 infix operator ?= : OptionalAssignment
-public class UserDefaultsPersister : pai.JobPersister {
-  public init(key: Swift.String = "SwiftQueueInfo")
-  public func restore() -> [Swift.String]
-  public func restore(queueName: Swift.String) -> [Swift.String]
-  public func put(queueName: Swift.String, taskId: Swift.String, data: Swift.String)
-  public func remove(queueName: Swift.String, taskId: Swift.String)
-  @objc deinit
-}
-@objc @_inheritsConvenienceInitializers public class PNSignalBaseSession : ObjectiveC.NSObject {
-  @objc deinit
-  @objc override dynamic public init()
-}
 public struct PNConstantsStore {
   public struct PushNotificationKeys {
     public static let inboxListUpdatedNotification: Swift.String
   }
-  public struct Misc {
-  }
-}
-public enum NetworkType : Swift.Int, Swift.Codable {
-  case any
-  case cellular
-  case wifi
-  public typealias RawValue = Swift.Int
-  public init?(rawValue: Swift.Int)
-  public var rawValue: Swift.Int {
-    get
-  }
-}
-public enum RetryConstraint {
-  case retry(delay: Foundation.TimeInterval)
-  case cancel
-  case exponential(initial: Foundation.TimeInterval)
-}
-public struct JobInfo {
 }
 @_hasMissingDesignatedInitializers final public class PNInboxMessage : Swift.CustomStringConvertible, Swift.Hashable {
   final public let pushId: Swift.String
@@ -207,115 +131,18 @@ public struct JobInfo {
   final public func updateFlashMessageAppearance(fontColorHex: Swift.String, backgroundColorHex: Swift.String)
   @objc deinit
 }
-@_hasMissingDesignatedInitializers final public class PNPushNotification {
-  @objc deinit
-}
 @_hasMissingDesignatedInitializers final public class PNSilentNotification {
   final public let userInfo: [Swift.AnyHashable : Any]
   final public let extraInfo: [Swift.AnyHashable : Any]?
   @objc deinit
 }
-@_hasMissingDesignatedInitializers public class V1Serializer : pai.JobInfoSerializer {
-  public func serialize(info: pai.JobInfo) throws -> Swift.String
-  public func deserialize(json: Swift.String) throws -> pai.JobInfo
-  @objc deinit
-}
-@_hasMissingDesignatedInitializers final public class PNPushButton {
-  final public let groupId: Swift.String
-  final public let buttonId: Swift.String
+@_hasMissingDesignatedInitializers public class PNPushBaseButton : Swift.CustomStringConvertible {
   final public let title: Swift.String
-  final public let type: Swift.String?
-  @objc deinit
-}
-public protocol JobCreator {
-  func create(type: Swift.String, params: [Swift.String : Any]?) -> pai.Job
-}
-public protocol QueueCreator {
-  func create(queueName: Swift.String) -> pai.Queue
-}
-public protocol JobPersister {
-  func restore() -> [Swift.String]
-  func restore(queueName: Swift.String) -> [Swift.String]
-  func put(queueName: Swift.String, taskId: Swift.String, data: Swift.String)
-  func remove(queueName: Swift.String, taskId: Swift.String)
-}
-public protocol JobInfoSerializer {
-  func serialize(info: pai.JobInfo) throws -> Swift.String
-  func deserialize(json: Swift.String) throws -> pai.JobInfo
-}
-public protocol JobResult {
-  func done(_ result: pai.JobCompletion)
-}
-public enum JobCompletion {
-  case success
-  case fail(Swift.Error)
-}
-public protocol Job {
-  func onRun(callback: pai.JobResult)
-  func onRetry(error: Swift.Error) -> pai.RetryConstraint
-  func onRemove(result: pai.JobCompletion)
-}
-public protocol Queue {
-  var name: Swift.String { get }
-  var maxConcurrent: Swift.Int { get }
-}
-public enum BasicQueue {
-  case synchronous
-  case concurrent
-  case custom(Swift.String)
-}
-public class BasicQueueCreator : pai.QueueCreator {
-  public init()
-  public func create(queueName: Swift.String) -> pai.Queue
-  @objc deinit
-}
-extension BasicQueue : pai.Queue {
-  public var name: Swift.String {
+  final public let deepLinkType: pai.PNDeeplinkType?
+  public var deepLink: pai.PNDeeplink?
+  public var description: Swift.String {
     get
   }
-  public var maxConcurrent: Swift.Int {
-    get
-  }
-}
-public protocol JobListener {
-  func onBeforeRun(job: pai.JobInfo)
-  func onAfterRun(job: pai.JobInfo, result: pai.JobCompletion)
-  func onTerminated(job: pai.JobInfo, result: pai.JobCompletion)
-}
-public enum Limit {
-  case unlimited
-  case limited(Swift.Double)
-}
-public enum SwiftQueueError : Swift.Error {
-  case canceled
-  case deadline
-  case duplicate
-  case onRetryCancel(Swift.Error)
-}
-@_hasMissingDesignatedInitializers final public class SwiftQueueManager {
-  final public var isSuspended: Swift.Bool {
-    get
-    set
-  }
-  final public func cancelAllOperations()
-  final public func cancelOperations(tag: Swift.String)
-  final public func cancelOperations(uuid: Swift.String)
-  final public func waitUntilAllOperationsAreFinished()
-  final public func queueCount() -> Swift.Int
-  final public func jobCount() -> Swift.Int
-  @objc deinit
-}
-final public class SwiftQueueManagerBuilder {
-  public init(creator: pai.JobCreator, queueCreator: pai.QueueCreator = BasicQueueCreator())
-  final public func set(persister: pai.JobPersister) -> Self
-  final public func set(serializer: pai.JobInfoSerializer) -> Self
-  final public func set(logger: pai.SwiftQueueLogger) -> Self
-  final public func set(isSuspended: Swift.Bool) -> Self
-  @available(*, deprecated, renamed: "initInBackground")
-  final public func set(synchronous: Swift.Bool) -> Self
-  final public func set(initInBackground: Swift.Bool) -> Self
-  final public func set(listener: pai.JobListener) -> Self
-  final public func build() -> pai.SwiftQueueManager
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class PNNotificationManager : ObjectiveC.NSObject {
@@ -357,37 +184,6 @@ extension PNNotificationManager {
 }
 extension PNNotificationManager {
   final public func displayFlashMessage()
-  @available(*, deprecated, message: "This API will be deleted in the next release and has no effect upon being called")
-  final public func flashViewRemoved()
-}
-public enum LogLevel : Swift.Int {
-  case verbose
-  case warning
-  case error
-  public typealias RawValue = Swift.Int
-  public init?(rawValue: Swift.Int)
-  public var rawValue: Swift.Int {
-    get
-  }
-}
-extension LogLevel {
-  public var description: Swift.String {
-    get
-  }
-}
-public protocol SwiftQueueLogger {
-  func log(_ level: pai.LogLevel, jobId: @autoclosure () -> Swift.String, message: @autoclosure () -> Swift.String)
-}
-open class ConsoleLogger : pai.SwiftQueueLogger {
-  public init(min: pai.LogLevel = .verbose)
-  final public func log(_ level: pai.LogLevel, jobId: @autoclosure () -> Swift.String, message: @autoclosure () -> Swift.String)
-  open func printComputed(output: Swift.String)
-  @objc deinit
-}
-@_hasMissingDesignatedInitializers public class NoLogger : pai.SwiftQueueLogger {
-  public static let shared: pai.NoLogger
-  public func log(_ level: pai.LogLevel, jobId: @autoclosure () -> Swift.String, message: @autoclosure () -> Swift.String)
-  @objc deinit
 }
 public protocol PNPTMPushNotificationDelegate : AnyObject {
   func deviceLanguage() -> Swift.String?
@@ -400,6 +196,7 @@ public protocol PNPTMPushNotificationDelegate : AnyObject {
   func didDisplayFlashMessage(with payload: [Swift.AnyHashable : Any]?)
   func logSDKGeneric(error: pai.PNCrashlyticsTrackingError)
   func firebaseConfigrationDone()
+  func receivedInteractiveAction(on button: pai.PNPushBaseButton, deepLink: pai.PNDeeplink?)
 }
 extension PNPTMPushNotificationDelegate {
   public func logSDKGeneric(error: pai.PNCrashlyticsTrackingError)
@@ -407,22 +204,12 @@ extension PNPTMPushNotificationDelegate {
   public func didDisplayFlashMessage(with payload: [Swift.AnyHashable : Any]?)
   public func firebaseConfigrationDone()
 }
-@objc @_inheritsConvenienceInitializers final public class PNSignalDispatcher : ObjectiveC.NSObject {
-  public static let shared: pai.PNSignalDispatcher
-  @objc override dynamic public init()
-  @objc deinit
-}
-@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class PNSignalLog : ObjectiveC.NSObject, Foundation.NSCoding {
-  @objc final public func encode(with aCoder: Foundation.NSCoder)
-  @objc public init?(coder aDecoder: Foundation.NSCoder)
-  @objc override final public var description: Swift.String {
-    @objc get
+@_hasMissingDesignatedInitializers final public class PNDeeplink : Swift.CustomStringConvertible {
+  final public let deepLinkString: Swift.String?
+  final public let deepLinkDict: [Swift.AnyHashable : Any]?
+  final public var description: Swift.String {
+    get
   }
-  @objc deinit
-}
-@_hasMissingDesignatedInitializers final public class PNDeeplink {
-  final public var deepLinkString: Swift.String?
-  final public var deepLinkDict: [Swift.AnyHashable : Any]?
   @objc deinit
 }
 @_hasMissingDesignatedInitializers final public class PNChannel {
@@ -438,9 +225,6 @@ extension pai.PNSDKMode : Swift.RawRepresentable {}
 extension pai.PNInboxMessageReadStatus : Swift.Equatable {}
 extension pai.PNInboxMessageReadStatus : Swift.Hashable {}
 extension pai.PNInboxMessageReadStatus : Swift.RawRepresentable {}
-extension pai.NetworkType : Swift.Equatable {}
-extension pai.NetworkType : Swift.Hashable {}
-extension pai.NetworkType : Swift.RawRepresentable {}
-extension pai.LogLevel : Swift.Equatable {}
-extension pai.LogLevel : Swift.Hashable {}
-extension pai.LogLevel : Swift.RawRepresentable {}
+extension pai.PNDeeplinkType : Swift.Equatable {}
+extension pai.PNDeeplinkType : Swift.Hashable {}
+extension pai.PNDeeplinkType : Swift.RawRepresentable {}

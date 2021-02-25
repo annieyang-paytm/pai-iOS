@@ -188,10 +188,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
-@import CoreGraphics;
-@import Foundation;
 @import ObjectiveC;
-@import UIKit;
 @import UserNotifications;
 #endif
 
@@ -211,25 +208,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 
-
-@class NSCoder;
-
-/// A background view that messages can use for rounding all or a subset of corners with squircles
-/// (the smoother method of rounding corners that you see on app icons).
-SWIFT_CLASS("_TtC3pai18CornerRoundingView")
-@interface CornerRoundingView : UIView
-/// Specifies the corner radius to use.
-@property (nonatomic) IBInspectable CGFloat cornerRadius;
-/// Set to <code>true</code> for layouts where only the leading corners should be
-/// rounded. For example, the layout in TabView.xib rounds the bottom corners
-/// when displayed from the top and the top corners when displayed from the bottom.
-/// When this property is <code>true</code>, the <code>roundedCorners</code> property will be overwritten
-/// by relevant animators (e.g. <code>TopBottomAnimation</code>).
-@property (nonatomic) IBInspectable BOOL roundsLeadingCorners;
-- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-- (void)layoutSubviews;
-@end
 
 
 SWIFT_CLASS("_TtC3pai21PNNotificationManager")
@@ -255,37 +233,6 @@ SWIFT_CLASS("_TtC3pai30PNNotificationServiceExtension")
 - (void)didReceiveNotificationRequest:(UNNotificationRequest * _Nonnull)request withContentHandler:(void (^ _Nonnull)(UNNotificationContent * _Nonnull))contentHandler;
 - (void)serviceExtensionTimeWillExpire;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC3pai19PNSignalBaseSession")
-@interface PNSignalBaseSession : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC3pai18PNSignalDispatcher")
-@interface PNSignalDispatcher : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-
-
-SWIFT_CLASS("_TtC3pai11PNSignalLog")
-@interface PNSignalLog : NSObject <NSCoding>
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-- (void)encodeWithCoder:(NSCoder * _Nonnull)aCoder;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
-@property (nonatomic, readonly, copy) NSString * _Nonnull description;
-@end
-
-
-SWIFT_CLASS("_TtC3pai6PNUser")
-@interface PNUser : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 

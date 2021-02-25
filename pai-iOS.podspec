@@ -1,12 +1,10 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "7.1.1"
+    s.version      = "7.2.0"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-        1. Extensive project-wise code/structure cleanup/reorganize
-        2. Add a common notification json parser for all push models to ensure correct push sturecture and entity parsing
-        3. Extensive flash structure/view refactoring and code clear up
-        4. Bug fixes
+        1. Enable actionable notification
+        2. Bug fixes
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/pai-iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
