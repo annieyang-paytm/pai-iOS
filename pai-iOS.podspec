@@ -1,10 +1,9 @@
 Pod::Spec.new do |s|
     s.name         = "pai-iOS"
-    s.version      = "7.2.0"
+    s.version      = "7.2.1"
     s.summary      = "Marketing Campaign manager"
     s.description  = <<-DESC
-        1. Enable actionable notification
-        2. Bug fixes
+        Minor bug fixes
     DESC
     s.homepage     = "https://wiki.mypaytm.com/display/MAP/pai-iOS+Push+SDK+Integration"
     s.license = { :type => 'MIT', :file => 'LICENSE' }
